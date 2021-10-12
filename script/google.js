@@ -6,7 +6,7 @@ let response;
 let searchValue = 'houston'
 let lat;
 let long;
-
+// initializing the map
 function initMap() {
 map = new google.maps.Map(document.getElementById("map"), {
 zoom: 5,
@@ -22,6 +22,7 @@ inputText.type = "text";
 inputText.placeholder = "Enter a location";
 const submitButton = document.createElement("input");
 submitButton.type = "button";
+submitButton.id = "submit"
 submitButton.value = "Geocode";
 submitButton.classList.add("button", "button-primary");
 const clearButton = document.createElement("input");
@@ -35,16 +36,12 @@ responseDiv = document.createElement("div");
 responseDiv.id = "response-container";
 responseDiv.appendChild(response);
 
-//   const instructionsElement = document.createElement("p");
-
-//   instructionsElement.id = "instructions";
-//   instructionsElement.innerHTML =
-//     "<strong>Instructions</strong>: Enter an address in the textbox to geocode or click on the map to reverse geocode.";
+//controls for top left corner. inputs are passed into googleLand, no access.
 map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
 map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
 map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-//   map.controls[google.maps.ControlPosition.LEFT_TOP].push(instructionsElement);
 map.controls[google.maps.ControlPosition.LEFT_TOP].push(responseDiv);
+
 marker = new google.maps.Marker({
 map,
 });
@@ -91,4 +88,40 @@ geocoder
 
 
 
+// tests for passing in data
 
+
+// let subButton = document.querySelector('#submit')
+// let eventOne = new Event("click", {"bubbles":false, "cancelable":false});
+
+// subButton.dispatchEvent(eventOne);
+
+
+
+// function initialize() {
+    
+//     var latlng = new google.maps.LatLng(-34.397, 150.644);
+//     var mapOptions = {
+//         zoom: 8,
+//         center: latlng
+//     }
+//     map = new google.maps.Map(document.getElementById('#map'), mapOptions);
+//     codeAddress(searchValue)
+//     }
+
+//     function codeAddress(locationValue) {
+//     geocoder.geocode( { address: locationValue}, function(results, status) {
+//         if (status == google.maps.GeocoderStatus.OK) {
+//         map.setCenter(results[0].geometry.location);
+//         marker = new google.maps.Marker({
+//             map: map,
+//             position: results[0].geometry.location
+//         });
+//         } else {
+//         alert('Geocode was not successful for the following reason: ' + status);
+//         }
+//     });
+// }
+
+
+// maps.event.addDomListener(window, 'load', initialize)
