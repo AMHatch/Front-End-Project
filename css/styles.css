@@ -1,6 +1,37 @@
-/* 102542 Oxford Blue   dark blue
+/*
+#102542 Oxford Blue   dark blue
+#C61C26 red extreme of gradient
+#F8D753 yellow extreme of gradient
+#CDD7D6 Light Grey    light grey
+#B3A394 Grullo     lightbrownish grey
+#FFFFFF White        it's white
+*/
 
-F87060 Bittersweet   pink/orange
-CDD7D6 Light Grey    light grey
-B3A394 Grullo     lightbrownish grey
-FFFFFF White        it's white */
+body{
+    background-color: #102542;
+    /* background-image: url("/images/background-test.png");
+    background-size: 90%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top; */
+    margin: 0px;
+}
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dropdown-menu {
+    max-height: 265px;
+    overflow-y: auto;
+}
+.menu-bg{
+    background-color: #C61C26;
+    /* background-color: #f8d753; */
+}
+.text-white{
+    color: white;
+}
+button:hover{
+    background-color: #f8d753;
+}
