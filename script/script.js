@@ -51,48 +51,48 @@
 //         // console.log(response.query.search[0].snippet);
 //     })
 // })
-// let date = '3/20'
-// fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
-//     return result.json()
-// })
-// .then(data => {
-//     let events = data.events
-//     // let firstEvent = events[0]
-//     let secondEvent = events[1]
-//     let wikiLinksList = secondEvent.wikipedia
-//     let firstWikiLinkObj = wikiLinksList[0]
-//     let firstWikiLink = firstWikiLinkObj.wikipedia
-//     console.log(firstWikiLink);
-//     fetch(`${firstWikiLink}`).then(result => {
-//         return result.text()
-//     })
-//     .then(data => {
-//         let parser = new DOMParser();
-//         let doc = parser.parseFromString(data, 'text/html');
-//         console.log(doc);
-//         let firstHeading = doc.querySelector('.firstHeading')
-//         console.log(firstHeading.textContent);
-//     })
-// })
-
-// once article is found use this to find country
-fetch(`https://en.wikipedia.org/wiki/Quebec_City`).then(result => {
-    return result.text()
+let date = '3/20'
+fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
+    return result.json()
 })
 .then(data => {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(data, 'text/html');
-    console.log(doc);
-    let infoBoxLabelList = doc.querySelectorAll('.infobox-label')
-    console.log(infoBoxLabelList);
-    let countryNode
-    infoBoxLabelList.forEach(labelNode => {
-        if (labelNode.textContent == "Country"){
-            countryNode = labelNode
-            let countryParent = countryNode.parentNode
-            let countryParentLastChild = countryParent.lastChild
-            let countryText = countryParentLastChild.textContent
-            console.log(countryText);
-        }
-    });
+    let events = data.events
+    // let firstEvent = events[0]
+    let secondEvent = events[1]
+    let wikiLinksList = secondEvent.wikipedia
+    let firstWikiLinkObj = wikiLinksList[0]
+    let firstWikiLink = firstWikiLinkObj.wikipedia
+    console.log(firstWikiLink);
+    fetch(`${firstWikiLink}`).then(result => {
+        return result.text()
+    })
+    .then(data => {
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(data, 'text/html');
+        console.log(doc);
+        let firstHeading = doc.querySelector('.firstHeading')
+        console.log(firstHeading.textContent);
+    })
 })
+
+// once article is found use this to find country
+// fetch(`https://en.wikipedia.org/wiki/Quebec_City`).then(result => {
+//     return result.text()
+// })
+// .then(data => {
+//     let parser = new DOMParser();
+//     let doc = parser.parseFromString(data, 'text/html');
+//     console.log(doc);
+//     let infoBoxLabelList = doc.querySelectorAll('.infobox-label')
+//     console.log(infoBoxLabelList);
+//     let countryNode
+//     infoBoxLabelList.forEach(labelNode => {
+//         if (labelNode.textContent == "Country"){
+//             countryNode = labelNode
+//             let countryParent = countryNode.parentNode
+//             let countryParentLastChild = countryParent.lastChild
+//             let countryText = countryParentLastChild.textContent
+//             console.log(countryText);
+//         }
+//     });
+// })
