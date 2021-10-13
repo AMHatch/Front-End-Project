@@ -6,11 +6,6 @@
 // );
 
 
-// clearButton.addEventListener("click", () => {
-// clear();
-// });
-// clear();
-// }
 
 // const inputText = document.createElement("input");
 
@@ -75,4 +70,7 @@
 // }
 
 
-// maps.event.addDomListener(window, 'load', initialize)
+// maps.event.addDomListener(window, 'load', initialize)\
+
+
+// { lat: parseFloat(latitude), lng: parseFloat(longitude),};
