@@ -6,7 +6,9 @@ fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
 .then(data => {
     // let link = data.events[0].wikipedia[0].wikipedia
     // console.log(link)
-    // let events = data.events
+    // let events = data.events;
+    // console.log(events);
+
     // // let firstEvent = events[0]
     // let secondEvent = events[1];
     // let wikiLinksList = secondEvent.wikipedia;
@@ -31,27 +33,32 @@ fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
         let doc = parser.parseFromString(data, 'text/html');
         // console.log(doc)
 
-        // if (doc.querySelector(".geo-dec")) {
-        //     let parent = doc.querySelector(".geo-dec");
-        //     console.log(parent);
-        //     let content = parent.textContent;
-        //     let contentArray = content.split("°");
-        //     let long = contentArray[0];
-        //     let contentArray2 = contentArray[1].split(" ");
-        //     let lat = contentArray2[1];
-        //     console.log(long, lat);
-        // }
+        
         if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-            console.log("hi");
-            let longSpan = doc.querySelector(".longitude").textContent
-            console.log(longSpan);
-            let latSpan = doc.querySelector(".latitude").textContent;
-            console.log(latSpan);
-            // need to split on degrees and spaces again... ask Andrew about this one
+            let longString = doc.querySelector(".longitude").textContent
+            let long = dmsConverter(longString)
+            console.log(long);
+
+            let latString = doc.querySelector(".latitude").textContent;
+            let lat = dmsConverter(latString)
+            console.log(lat);
         }
-        // else if (doc.querySelector(".geo-dms")) {
-            
-        // }
+        else if (doc.querySelector(".geo-dec")) {
+            let parent = doc.querySelector(".geo-dec");
+            let content = parent.textContent;
+            let contentArray = content.split("°");
+            let long = contentArray[0];
+            let contentArray2 = contentArray[1].split(" ");
+            let lat = contentArray2[1];
+            console.log(long, lat);
+        }
+        else if (labelNode.textContent == "Country"){
+            countryNode = labelNode
+            let countryParent = countryNode.parentNode
+            let countryParentLastChild = countryParent.lastChild
+            let countryText = countryParentLastChild.textContent
+            console.log(countryText);
+        }
         else {
             console.log("error")
         }
