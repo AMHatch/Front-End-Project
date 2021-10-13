@@ -5,6 +5,7 @@
 #CDD7D6 Light Grey    light grey
 #B3A394 Grullo     lightbrownish grey
 #FFFFFF White        it's white
+#C4DDFE light blue
 */
 
 body{
@@ -43,6 +44,44 @@ body{
 .text-white{
     color: white;
 }
+.text-oxford-blue {
+    color: #102542;
+}
+
+select:hover{
+    background-color: #f8d753;
+}
+
+.border-light-grey {
+    border: 2px solid #CDD7D6;
+}
+
+.border-grullo {
+    border: 2px solid #B3A394;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-light-blue {
+    background-color: #C4DDFE;
+}
+
+.card {
+    width: 23rem; 
+    height: 12rem;
+    border-radius: 2px;
+}
+
+@media only screen and (max-width: 576px) {
+    .card {
+        height: 10rem;
+    }
+
+}
+
+
 .text-oxford{
     color: #102542;
 }
@@ -52,8 +91,10 @@ select:hover{
 .map{
     height: 100%;
 }
+
 a{ display: flex;
     align-items: center;
     text-decoration: none;
     color: #102542;
+  
 }
