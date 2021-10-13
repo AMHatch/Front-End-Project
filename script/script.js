@@ -58,11 +58,16 @@ fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
 .then(data => {
     let events = data.events
     // let firstEvent = events[0]
+    let chosenEventsList = []
+    let event
+
+    let randomEventIndex = Math.floor(Math.random() * events.length);
+    let randomEvent = events[randomEventIndex]
     let secondEvent = events[1]
     let wikiLinksList = secondEvent.wikipedia
     let firstWikiLinkObj = wikiLinksList[0]
     let firstWikiLink = firstWikiLinkObj.wikipedia
-    console.log(firstWikiLink);
+    console.log(randomEvent);
     fetch(`${firstWikiLink}`).then(result => {
         return result.text()
     })
@@ -96,3 +101,5 @@ fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
 //         }
 //     });
 // })
+
+
