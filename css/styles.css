@@ -15,6 +15,7 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top; */
+    padding: 0;
     margin: 0px;
 }
 .center{
@@ -25,6 +26,16 @@ body{
 .dropdown-menu {
     max-height: 265px;
     overflow-y: auto;
+}
+.bg-bbBlue{
+    background-color: #C4DDFE;
+
+}
+.bg-lGrey{
+    background-color: #CDD7D6;
+}
+.bg-white{
+    background-color: #FFFFFF;
 }
 .menu-bg{
     background-color: #C61C26;
@@ -67,4 +78,23 @@ select:hover{
     .card {
         height: 10rem;
     }
+
+}
+
+
+.text-oxford{
+    color: #102542;
+}
+select:hover{
+    background-color: #f8d753;
+}
+.map{
+    height: 100%;
+}
+
+a{ display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #102542;
+  
 }
