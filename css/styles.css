@@ -14,6 +14,7 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top; */
+    padding: 0;
     margin: 0px;
 }
 .center{
@@ -25,6 +26,9 @@ body{
     max-height: 265px;
     overflow-y: auto;
 }
+.bg-lGrey{
+    background-color: #CDD7D6;
+}
 .menu-bg{
     background-color: #C61C26;
     /* background-color: #f8d753; */
@@ -32,6 +36,12 @@ body{
 .text-white{
     color: white;
 }
+.text-oxford{
+    color: #102542;
+}
 select:hover{
     background-color: #f8d753;
+}
+.map{
+    height: 100%;
 }
