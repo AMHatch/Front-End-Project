@@ -32,6 +32,6 @@ body{
 .text-white{
     color: white;
 }
-button:hover{
+select:hover{
     background-color: #f8d753;
 }
