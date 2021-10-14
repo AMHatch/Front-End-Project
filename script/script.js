@@ -135,12 +135,12 @@ async function main(date) {
         }
       }
     }
+    console.log(chosenEventsList); 
     return chosenEventsList
   } catch (ex) {
     console.log(ex);
   }
 }
 let dateInput = '3/2'
-let varMain = main(dateInput);
-console.log(varMain);
+main(dateInput);
 
