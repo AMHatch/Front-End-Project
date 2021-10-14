@@ -9,7 +9,13 @@ submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     let date = month.value + "/" + day.value;
     console.log(date);
-    return date;
+    if (date === "02/30" || date === "02/31" || date === "04/31" || date === "06/31" || date === "09/31" || date === "11/31"){
+        alert("Please enter a valid date.")
+    }
+    else{
+        return date;
+    };
+    
 });
 
 // eventsList = [
