@@ -1,12 +1,14 @@
 /*
-#102542 Oxford Blue   dark blue
-#C61C26 red extreme of gradient
-#F8D753 yellow extreme of gradient
 #CDD7D6 Light Grey    light grey
-#B3A394 Grullo     lightbrownish grey
 #FFFFFF White        it's white
 #C4DDFE light blue
 */
+
+/* NEW PALETTE:
+#000000 Black
+#CB00F8 Fuchsia
+#01FEFF Neon Blue
+ */
 
 body{
     background-color: #000000;
@@ -28,11 +30,8 @@ body{
     max-height: 265px;
     overflow-y: auto;
 }
-.bg-bbBlue{
-    background-color: #585858;
-}
 .bg-med-gray{
-    background-color: #585858;
+    background-color: #222222;
 }
 .bg-lGrey{
     background-color: #CDD7D6;
@@ -57,14 +56,12 @@ body{
 .text-white{
     color: white;
 }
-.text-oxford-blue {
-    color: #102542;
+.text-blue {
+    color: #01FEFF;
 }
-
-select:hover{
-    background-color: #f8d753;
+.text-fuchsia{
+    color: #CB00F8;
 }
-
 .border-light-grey {
     border: 2px solid #CDD7D6;
 }
@@ -92,7 +89,7 @@ select:hover{
     color: #102542;
 }
 select:hover{
-    background-color: #f8d753;
+    background-color: #CB00F8;
 }
 .map{
     height: 450px;
@@ -134,7 +131,7 @@ a{
 }
 
 .button:hover {
-    box-shadow: 2px 2px 2px 1px rgba(63, 81, 107, 0.3)
+    box-shadow: 2px 2px 2px 1px #CB00F8
 }
 
 .button:active {
