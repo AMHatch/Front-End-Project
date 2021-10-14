@@ -22,8 +22,8 @@ submitButton.addEventListener("click", (e) => {
     }
     else{
         //work in progress
-        // const mapMarkers = main(date)
-        // sortObj(mapMarkers)
+        const mapMarkers = main(date)
+        sortObj(mapMarkers)
     };
     
 });
