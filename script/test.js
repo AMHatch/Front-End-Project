@@ -55,11 +55,11 @@ function scrapeWikipedia(link) {
       const latString = doc.querySelector(".latitude").textContent;
       const longString = doc.querySelector(".longitude").textContent;
       const lat = dmsConverter(latString).toString();
-      const long = dmsConverter(longString).toString();
+      const lng = dmsConverter(longString).toString();
       res({
         country: "",
         locationType: "coord",
-        latlng: { lat, long },
+        latlng: { lat, lng },
       });
     }
     // Option 2: Check lat long decimal
@@ -68,12 +68,12 @@ function scrapeWikipedia(link) {
       const content = parent.textContent;
       const contentArray = content.split("°");
       const contentArray2 = contentArray[1].split(" ");
-      const long = contentArray[0];
+      const lng = contentArray[0];
       const lat = contentArray2[1];
       res({
         country: "",
         locationType: "coord",
-        latlng: { lat, long },
+        latlng: { lat, lng },
       });
     }
     // Option 3: Check Country
@@ -84,7 +84,7 @@ function scrapeWikipedia(link) {
       res({
         country,
         locationType: "country",
-        latlng: { lat: "", long: "" },
+        latlng: { lat: "", lng: "" },
       });
     }
     // Option 4: Found Nothing
@@ -111,37 +111,36 @@ function parseMapEvent(OG, description, year) {
 }
 
 // Main
-async function main() {
+async function main(date) {
   try {
-    const date = "4/20";
-    const mapLocations = [];
+    console.log(date);
+    const chosenEventsList = [];
     const eventsJSON = await fetch(
       `https://byabbe.se/on-this-day/${date}/events.json`
     );
     const eventsData = await eventsJSON.json();
     const events = eventsData.events;
     const shuffledEvents = shuffleEvents(events);
-
-    while (mapLocations.length < 3) {
+    while (chosenEventsList.length < 3) {
       const newEvent = shuffledEvents.pop();
       const newEventWikiLinksArr = newEvent.wikipedia; //array of wikipedia link objects
-
       for (let index = 0; index < newEventWikiLinksArr.length; index++) {
         const wikiLink = newEventWikiLinksArr[index].wikipedia;
         const result = await scrapeWikipedia(wikiLink);
         if (result) {
-          mapLocations.push(
+          chosenEventsList.push(
             parseMapEvent(result, newEvent.description, newEvent.year)
           );
           break;
         }
       }
     }
-
-    console.log(mapLocations);
+    return chosenEventsList
   } catch (ex) {
     console.log(ex);
   }
 }
+let dateInput = '3/2'
+let varMain = main(dateInput);
+console.log(varMain);
 
-main();
