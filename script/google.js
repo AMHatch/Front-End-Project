@@ -25,7 +25,7 @@ let options = {
     styles: [
         { elementType: "geometry", stylers: [{ color: "#585858" }] },
         { elementType: "labels.text.stroke", stylers: [{ color: "#000000" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#01FEFF" }] },
+        { elementType: "labels.text.fill", stylers: [{ color: "#ffffff" }] },
         {
         featureType: "administrative.locality",
         elementType: "labels.text.fill",
@@ -39,12 +39,12 @@ let options = {
     {
         featureType: "poi.park",
         elementType: "geometry",
-        stylers: [{ color: "#263c3f" }],
+        stylers: [{ color: "#222222" }],
     },
     {
         featureType: "poi.park",
         elementType: "labels.text.fill",
-        stylers: [{ color: "#6b9a76" }],
+        stylers: [{ color:"#CDE4DA" }],
     },
     {
         featureType: "road",
@@ -107,10 +107,37 @@ let options = {
 function initMap() {
 googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
 geocoder = new google.maps.Geocoder();
-infowindow = new google.maps.InfoWindow();
-marker = new google.maps.Marker({googleMap,});
-marker2 = new google.maps.Marker({googleMap,});
-marker3 = new google.maps.Marker({googleMap,});
+infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
+infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
+infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+
+const pointer = "images/map-pointer.png"
+marker = new google.maps.Marker({ googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
+marker2 = new google.maps.Marker({googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
+marker3 = new google.maps.Marker({googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
+
+marker.addListener("click", () => {
+    infowindow.open({
+    anchor: marker,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+marker2.addListener("click", () => {
+    infowindow2.open({
+    anchor: marker2,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+marker3.addListener("click", () => {
+    infowindow3.open({
+    anchor: marker3,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+
 googleMap.addListener("click", (e) => {
 sortObj(chosenEventsList)
 });
