@@ -10,7 +10,7 @@ submitButton.addEventListener("click", (e) => {
     let date = month.value + "/" + day.value;
     console.log(date);
     if (date === "02/30" || date === "02/31" || date === "04/31" || date === "06/31" || date === "09/31" || date === "11/31"){
-        // modal to enter proper date
+        alert("Please enter a valid date.")
     }
     else{
         return date;
