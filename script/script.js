@@ -35,61 +35,65 @@ function shuffleEvents(arr) {
 // Input link
 // Output - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string), 4) null
 function scrapeWikipedia(link) {
-  return new Promise(async (res, _rej) => {
-    const wikiPageBlock = await fetch(link);
-    const wikiPageText = await wikiPageBlock.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(wikiPageText, "text/html");
-    const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
-    let countryNode;
+  return new Promise(async (res, rej) => {
+    try {
+      const wikiPageBlock = await fetch(link);
+      const wikiPageText = await wikiPageBlock.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(wikiPageText, "text/html");
+      const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
+      let countryNode;
 
-    // Checks to see if a country field exists to scrape coordinates
-    infoBoxLabelList.forEach((element) => {
-      if (element.textContent == "Country") {
-        countryNode = element;
+      // Checks to see if a country field exists to scrape coordinates
+      infoBoxLabelList.forEach((element) => {
+        if (element.textContent == "Country") {
+          countryNode = element;
+        }
+      });
+
+      // Option 1: Check lat long dms
+      if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
+        const latString = doc.querySelector(".latitude").textContent;
+        const longString = doc.querySelector(".longitude").textContent;
+        const lat = dmsConverter(latString).toString();
+        const lng = dmsConverter(longString).toString();
+        res({
+          country: "",
+          locationType: "coord",
+          latlng: { lat, lng },
+        });
       }
-    });
-
-    // Option 1: Check lat long dms
-    if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-      const latString = doc.querySelector(".latitude").textContent;
-      const longString = doc.querySelector(".longitude").textContent;
-      const lat = dmsConverter(latString).toString();
-      const lng = dmsConverter(longString).toString();
-      res({
-        country: "",
-        locationType: "coord",
-        latlng: { lat, lng },
-      });
-    }
-    // Option 2: Check lat long decimal
-    else if (doc.querySelector(".geo-dec")) {
-      const parent = doc.querySelector(".geo-dec");
-      const content = parent.textContent;
-      const contentArray = content.split("°");
-      const contentArray2 = contentArray[1].split(" ");
-      const lng = contentArray[0];
-      const lat = contentArray2[1];
-      res({
-        country: "",
-        locationType: "coord",
-        latlng: { lat, lng },
-      });
-    }
-    // Option 3: Check Country
-    else if (countryNode) {
-      const countryParent = countryNode.parentNode;
-      const countryParentLastChild = countryParent.lastChild;
-      const country = countryParentLastChild.textContent;
-      res({
-        country,
-        locationType: "country",
-        latlng: { lat: "", lng: "" },
-      });
-    }
-    // Option 4: Found Nothing
-    else {
-      res(null);
+      // Option 2: Check lat long decimal
+      else if (doc.querySelector(".geo-dec")) {
+        const parent = doc.querySelector(".geo-dec");
+        const content = parent.textContent;
+        const contentArray = content.split("°");
+        const contentArray2 = contentArray[1].split(" ");
+        const lng = contentArray[0];
+        const lat = contentArray2[1];
+        res({
+          country: "",
+          locationType: "coord",
+          latlng: { lat, lng },
+        });
+      }
+      // Option 3: Check Country
+      else if (countryNode) {
+        const countryParent = countryNode.parentNode;
+        const countryParentLastChild = countryParent.lastChild;
+        const country = countryParentLastChild.textContent;
+        res({
+          country,
+          locationType: "country",
+          latlng: { lat: "", lng: "" },
+        });
+      }
+      // Option 4: Found Nothing
+      else {
+        res(null);
+      }
+    } catch (ex) {
+      rej(ex);
     }
   });
 }
@@ -137,6 +141,7 @@ async function main(date) {
     }
     return chosenEventsList;
   } catch (ex) {
+    // if this block is triggered display some sort of generic error message to user
     console.log(ex);
   }
 }
