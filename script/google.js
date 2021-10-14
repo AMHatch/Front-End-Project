@@ -1,19 +1,13 @@
-let map;
+let googleMap
 let marker;
 let marker2;
 let marker3;
-let marker4;
 let geocoder;
 let infowindow;
-let responseDiv;
 let response;
-let searchValue;
-let searchValue2; 
-let searchValue3;
 let searchObj ;
 let latitude
 let longitude
-let input;
 let latlngStr;
 let latlng;
 
@@ -24,25 +18,29 @@ let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.8
 
 
 // initializing the map
-
+let options = {
+    zoom: 3.3,
+    center: { lat: 30, lng:  15 },
+    mapTypeControl: false,
+    };
 function initMap() {
-map = new google.maps.Map(document.getElementById("map"), {
-zoom: 3.3,
-center: { lat: latitude = 30, lng: longitude = 15 },
-mapTypeControl: false,
-});
+
+
+
+googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
 geocoder = new google.maps.Geocoder();
 infowindow = new google.maps.InfoWindow();
-marker = new google.maps.Marker({map,});
-marker2 = new google.maps.Marker({map,});
-marker3 = new google.maps.Marker({map,});
+marker = new google.maps.Marker({googleMap,});
+marker2 = new google.maps.Marker({googleMap,});
+marker3 = new google.maps.Marker({googleMap,});
 
 let array = chosenEventsList
 
-map.addListener("click", (e) => {
+googleMap.addListener("click", (e) => {
 sortObj(array)
 });
 }
+
 // function to sort incoming object data by location data type
 function sortObj(objArray){
     for(let i = 0; i < objArray.length; i++){
@@ -53,23 +51,22 @@ function sortObj(objArray){
     else if(objArray[i].locationType == 'coord'){
         let lat = objArray[i].latlng.lat
         let long = objArray[i].latlng.lng
-        geocodeLatLng(geocoder, map, infowindow, lat, long, markerArr[i])
+        geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markerArr[i])
     }
 }}
 // function to process grid coordinates
-function geocodeLatLng(geocoder, map, infowindow,lat,long, markVar) {
+function geocodeLatLng(geocoder, googleMap, infowindow,lat,long, markVar) {
 latlong = {
     lat: parseFloat(lat),
     lng: parseFloat(long),
 };
-
 geocoder.geocode({ location: latlong })
     .then((response) => {
     if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
-        markVar.setMap(map)
+        markVar.setMap(googleMap)
         // infowindow.setContent(response.results[0].formatted_address);
-        // infowindow.open(map, markVar);
+        // infowindow.open(googleMap, markVar);
     } else {
         window.alert("No results found");
         }
@@ -81,11 +78,11 @@ function geocode(request,markVar,infowindow) {
 geocoder.geocode(request)
 .then((result) => {
     const { results } = result;
-    // map.setCenter(results[0].geometry.location);
+    // googleMap.setCenter(results[0].geometry.location);
     markVar.setPosition(results[0].geometry.location);
-    markVar.setMap(map);
+    markVar.setMap(googleMap);
     // infowindow.setContent(results[0].formatted_address);
-    // infowindow.open(map, markVar);
+    // infowindow.open(googleMap, markVar);
     return results;
 })
 .catch((e) => {
