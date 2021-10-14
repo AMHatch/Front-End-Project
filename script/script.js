@@ -1,167 +1,146 @@
 function dmsConverter(string) {
-    let beforeDecimal = parseFloat(string.split("°")[0])
-    let afterDecimal = string.split("°")[1]
-    if(string.includes("′") && string.includes("″")){
-        let minuteSplitArr = afterDecimal.split("′")
-        let minutes = parseFloat(minuteSplitArr[0]);
-        let minutesConverted = minutes/60
-        let secondsWithDirection = minuteSplitArr[1]
-        let seconds = secondsWithDirection.split("″")[0];
-        let secondsConverted = seconds/3600
-        return beforeDecimal + minutesConverted + secondsConverted
-    }
-    // // // formats for degrees, minutes, seconds
-    else if (string.includes("″")) {
-        let minutes = parseFloat(afterDecimal.split("′")[0]);
-        let minutesConverted = minutes/60
-        return beforeDecimal + minutesConverted
-    }
-    return beforeDecimal
+  let beforeDecimal = parseFloat(string.split("°")[0]);
+  let afterDecimal = string.split("°")[1];
+  if (string.includes("′") && string.includes("″")) {
+    let minuteSplitArr = afterDecimal.split("′");
+    let minutes = parseFloat(minuteSplitArr[0]);
+    let minutesConverted = minutes / 60;
+    let secondsWithDirection = minuteSplitArr[1];
+    let seconds = secondsWithDirection.split("″")[0];
+    let secondsConverted = seconds / 3600;
+    return beforeDecimal + minutesConverted + secondsConverted;
+  }
+  // // // formats for degrees, minutes, seconds
+  else if (string.includes("″")) {
+    let minutes = parseFloat(afterDecimal.split("′")[0]);
+    let minutesConverted = minutes / 60;
+    return beforeDecimal + minutesConverted;
+  }
+  return beforeDecimal;
 }
-function shuffleEvents(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = arr[i];
-        arr[i] = arr[j];
-        if  (arr[j].value == 'ace'){
-            arr[j].score = 11
-        }
-        arr[j] = temp;
-    }
-    return arr;
-}
-let empty = document.querySelector('.empty')
-function findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state){
-    if(state){
-    let eventObj = {};
-    let newEventObjToSearch = {};
-    let eventObjLinkList = [];
-    let link = "";
-    let countryNode;
-    let innerState = true
-    newEventObjToSearch = shuffledListFunction.pop()
-    eventObjLinkList = newEventObjToSearch.wikipedia
-    for (let index = 0; index < eventObjLinkList.length; index++) {
-        link = eventObjLinkList[index].wikipedia;
-        console.log(innerState);
-        if (innerState == false){
-            break;
-        }
-        else{
-            fetch(link).then(result => {
-                return result.text()
-            })
-            .then(data => {
-                let parser = new DOMParser();
-                let doc = parser.parseFromString(data, 'text/html');
-                let infoBoxLabelList = doc.querySelectorAll('.infobox-label');
-                infoBoxLabelList.forEach((element) => {
-                    if(element.textContent == "Country"){
-                        countryNode = element
-                    }
-                })
-                    if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-                        let latString = doc.querySelector(".latitude").textContent;
-                        let longString = doc.querySelector(".longitude").textContent;
-                        let latCoord = dmsConverter(latString).toString();
-                        let longCoord = dmsConverter(longString).toString();
-                        if(eventListForFunction.length < 3){
-                            eventObj = {locationType: "coord", latlng: {lat: latCoord, lcountry: "", ng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                            eventListForFunction = [...eventListForFunction, eventObj];
-                            latCoord = ""
-                            longCoord = ""
-                            indexOfShuffledArray += 1;
-                            lengthOfEventList += 1;
-                            innerState = false
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state);
-                            
-                        }
-                        else{
-                            state = false;
-                            console.log(indexOfShuffledArray);
-                            console.log(eventListForFunction);
-                            console.log('done dms');
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state);
-                            return
-                        }
-                    }
-                    else if (doc.querySelector(".geo-dec")) {
-                        let parent = doc.querySelector(".geo-dec");
-                        let content = parent.textContent;
-                        let contentArray = content.split("°");
-                        let longCoord = contentArray[0];
-                        let contentArray2 = contentArray[1].split(" ");
-                        let latCoord = contentArray2[1];
-                        if (eventListForFunction.length < 3){
-                            eventObj = {locationType: "coord", country: "", latlng:{lat: latCoord, lng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                            eventListForFunction = [...eventListForFunction, eventObj];
-                            latCoord = ""
-                            longCoord = ""
-                            indexOfShuffledArray += 1;
-                            lengthOfEventList += 1;
-                            innerState = false;
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state);
-                        }
-                        else{
-                            state = false;
-                            console.log(indexOfShuffledArray);
-                            console.log(eventListForFunction);
-                            console.log('done dec');
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state);
-                            return
-                        }
-                    }
-                    else if (countryNode){
-                        let countryParent = countryNode.parentNode
-                        let countryParentLastChild = countryParent.lastChild
-                        let countryText = countryParentLastChild.textContent
-                        if(eventListForFunction.length <3){
-                            eventObj = {locationType: "country", country: `${countryText}`, latlng:{lat: "", lng: ""}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                            eventListForFunction = [...eventListForFunction, eventObj];
-                            countryNode = null
-                            indexOfShuffledArray += 1;
-                            lengthOfEventList += 1;
-                            innerState = false;
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state);
-                        }
-                        else{
-                            state = false;
-                            console.log(indexOfShuffledArray);
-                            console.log(eventListForFunction);
-                            console.log('done country');
-                            findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state); 
-                            return             
-                        }
-                    }
-                    else if(lengthOfEventList < 3 && indexOfShuffledArray < shuffledListFunction.length){
-                        indexOfShuffledArray += 1;
-                        findLocation (shuffledListFunction, eventListForFunction , indexOfShuffledArray, lengthOfEventList, state)                
-                    }
-                })
-        }
-        
-        }
-    }
-    else{
-        state = false;
-        console.log(indexOfShuffledArray);
-        console.log(eventListForFunction);
-        console.log(`done outside`);
-    }
-    }
-    
 
-let date = "4/20"
-fetch(`https://byabbe.se/on-this-day/${date}/events.json`).then(result => {
-    return result.json()
-})
-.then(data => {
-    let events = data.events;
-    let shuffledEventsList = shuffleEvents(events);
-    let chosenEventsList = [];
-    let indexShuffle = 0;
-    let listLength = 1
-    let shouldLoop = true;
-    //        shuffledlist of objects, chosenList
-    findLocation(shuffledEventsList, chosenEventsList, indexShuffle, listLength, shouldLoop);
-})
+function shuffleEvents(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = arr[i];
+    arr[i] = arr[j];
+    if (arr[j].value == "ace") {
+      arr[j].score = 11;
+    }
+    arr[j] = temp;
+  }
+  return arr;
+}
+
+// Input link
+// Output - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string), 4) null
+function scrapeWikipedia(link) {
+  return new Promise(async (res, _rej) => {
+    const wikiPageBlock = await fetch(link);
+    const wikiPageText = await wikiPageBlock.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(wikiPageText, "text/html");
+    const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
+    let countryNode;
+
+    // Checks to see if a country field exists to scrape coordinates
+    infoBoxLabelList.forEach((element) => {
+      if (element.textContent == "Country") {
+        countryNode = element;
+      }
+    });
+
+    // Option 1: Check lat long dms
+    if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
+      const latString = doc.querySelector(".latitude").textContent;
+      const longString = doc.querySelector(".longitude").textContent;
+      const lat = dmsConverter(latString).toString();
+      const lng = dmsConverter(longString).toString();
+      res({
+        country: "",
+        locationType: "coord",
+        latlng: { lat, lng },
+      });
+    }
+    // Option 2: Check lat long decimal
+    else if (doc.querySelector(".geo-dec")) {
+      const parent = doc.querySelector(".geo-dec");
+      const content = parent.textContent;
+      const contentArray = content.split("°");
+      const contentArray2 = contentArray[1].split(" ");
+      const lng = contentArray[0];
+      const lat = contentArray2[1];
+      res({
+        country: "",
+        locationType: "coord",
+        latlng: { lat, lng },
+      });
+    }
+    // Option 3: Check Country
+    else if (countryNode) {
+      const countryParent = countryNode.parentNode;
+      const countryParentLastChild = countryParent.lastChild;
+      const country = countryParentLastChild.textContent;
+      res({
+        country,
+        locationType: "country",
+        latlng: { lat: "", lng: "" },
+      });
+    }
+    // Option 4: Found Nothing
+    else {
+      res(null);
+    }
+  });
+}
+
+// Input - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string)
+// Output - map object for andrew
+// eventObj = {
+//   locationType: "coord",
+//   latlng: { lat: latCoord, lcountry: "", ng: longCoord },
+//   description: `${newEventObjToSearch.description}`,
+//   year: `${newEventObjToSearch.year}`,
+// };
+function parseMapEvent(OG, description, year) {
+  return {
+    ...OG,
+    description,
+    year,
+  };
+}
+
+// Main
+async function main(date) {
+  try {
+    console.log(date);
+    const chosenEventsList = [];
+    const eventsJSON = await fetch(
+      `https://byabbe.se/on-this-day/${date}/events.json`
+    );
+    const eventsData = await eventsJSON.json();
+    const events = eventsData.events;
+    const shuffledEvents = shuffleEvents(events);
+    while (chosenEventsList.length < 3) {
+      const newEvent = shuffledEvents.pop();
+      const newEventWikiLinksArr = newEvent.wikipedia; //array of wikipedia link objects
+      for (let index = 0; index < newEventWikiLinksArr.length; index++) {
+        const wikiLink = newEventWikiLinksArr[index].wikipedia;
+        const result = await scrapeWikipedia(wikiLink);
+        if (result) {
+          chosenEventsList.push(
+            parseMapEvent(result, newEvent.description, newEvent.year)
+          );
+          break;
+        }
+      }
+    }
+    console.log(chosenEventsList); 
+    return chosenEventsList
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+let dateInput = '3/2'
+main(dateInput);
+
