@@ -9,7 +9,7 @@
 */
 
 body{
-    background-color: #102542;
+    background-color: #000000;
     /* background-image: url("/images/background-test.png");
     background-size: 90%;
     background-attachment: fixed;
@@ -29,8 +29,10 @@ body{
     overflow-y: auto;
 }
 .bg-bbBlue{
-    background-color: #C4DDFE;
-
+    background-color: #585858;
+}
+.bg-med-gray{
+    background-color: #585858;
 }
 .bg-lGrey{
     background-color: #CDD7D6;
@@ -70,7 +72,9 @@ select:hover{
 .font-roboto {
     font-family: 'Roboto', sans-serif;
 }
-
+.bg-black{
+    background-color: #000000;
+}
 .bg-light-blue {
     background-color: #C4DDFE;
 }
@@ -94,7 +98,8 @@ select:hover{
     height: 100%;
 }
 
-a{ display: flex;
+a{
+    display: flex;
     align-items: center;
     text-decoration: none;
     color: #102542;
