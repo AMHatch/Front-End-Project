@@ -65,11 +65,11 @@ function findLocation (shuffledListFunction, eventListForFunction , indexOfShuff
                         let longString = doc.querySelector(".longitude").textContent;
                         let latCoord = dmsConverter(latString).toString();
                         let longCoord = dmsConverter(longString).toString();
-                        eventObj = {locationType: "coord", latlng: {lat: latCoord, lcountry: "", ng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                        eventListForFunction = [...eventListForFunction, eventObj];
-                        latCoord = ""
-                        longCoord = ""
                         if(eventListForFunction.length < 3){
+                            eventObj = {locationType: "coord", latlng: {lat: latCoord, lcountry: "", ng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
+                            eventListForFunction = [...eventListForFunction, eventObj];
+                            latCoord = ""
+                            longCoord = ""
                             indexOfShuffledArray += 1;
                             lengthOfEventList += 1;
                             innerState = false
@@ -92,11 +92,11 @@ function findLocation (shuffledListFunction, eventListForFunction , indexOfShuff
                         let longCoord = contentArray[0];
                         let contentArray2 = contentArray[1].split(" ");
                         let latCoord = contentArray2[1];
-                        eventObj = {locationType: "coord", country: "", latlng:{lat: latCoord, lng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                        eventListForFunction = [...eventListForFunction, eventObj];
-                        latCoord = ""
-                        longCoord = ""
                         if (eventListForFunction.length < 3){
+                            eventObj = {locationType: "coord", country: "", latlng:{lat: latCoord, lng: longCoord}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
+                            eventListForFunction = [...eventListForFunction, eventObj];
+                            latCoord = ""
+                            longCoord = ""
                             indexOfShuffledArray += 1;
                             lengthOfEventList += 1;
                             innerState = false;
@@ -115,10 +115,10 @@ function findLocation (shuffledListFunction, eventListForFunction , indexOfShuff
                         let countryParent = countryNode.parentNode
                         let countryParentLastChild = countryParent.lastChild
                         let countryText = countryParentLastChild.textContent
-                        eventObj = {locationType: "country", country: `${countryText}`, latlng:{lat: "", lng: ""}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
-                        eventListForFunction = [...eventListForFunction, eventObj];
-                        countryNode = null
                         if(eventListForFunction.length <3){
+                            eventObj = {locationType: "country", country: `${countryText}`, latlng:{lat: "", lng: ""}, description: `${newEventObjToSearch.description}`, year: `${newEventObjToSearch.year}`};
+                            eventListForFunction = [...eventListForFunction, eventObj];
+                            countryNode = null
                             indexOfShuffledArray += 1;
                             lengthOfEventList += 1;
                             innerState = false;
