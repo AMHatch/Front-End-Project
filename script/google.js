@@ -1,4 +1,4 @@
-let map;
+let googleMap;  //map
 let marker;
 let marker2;
 let marker3;
@@ -17,6 +17,8 @@ let input;
 let latlngStr;
 let latlng;
 
+
+
 let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.81388888888888", lng: "71.20805555555556"}},
 {locationType: "country", country: "Mexico", latlng: {lat: "", lng: ""}},
 {locationType: "coord", country: "", latlng: {lat: "49.8486", lng: "3.2864"}},
@@ -25,12 +27,17 @@ let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.8
 
 // initializing the map
 
+let options = {
+    zoom: 3.3,
+    center: { lat: 30, lng:  15 },
+    mapTypeControl: false,
+    };
 function initMap() {
-map = new google.maps.Map(document.getElementById("map"), {
-zoom: 3.3,
-center: { lat: latitude = 30, lng: longitude = 15 },
-mapTypeControl: false,
-});
+
+    
+
+googleMap = new google.maps.Map(document.getElementById("googleMap"), options) 
+
 geocoder = new google.maps.Geocoder();
 infowindow = new google.maps.InfoWindow();
 marker = new google.maps.Marker({map,});
@@ -39,7 +46,7 @@ marker3 = new google.maps.Marker({map,});
 
 let array = chosenEventsList
 
-map.addListener("click", (e) => {
+googleMap.addListener("click", (e) => {
 sortObj(array)
 });
 }
@@ -53,11 +60,11 @@ function sortObj(objArray){
     else if(objArray[i].locationType == 'coord'){
         let lat = objArray[i].latlng.lat
         let long = objArray[i].latlng.lng
-        geocodeLatLng(geocoder, map, infowindow, lat, long, markerArr[i])
+        geocodeLatLng(geocoder,googleMap, infowindow, lat, long, markerArr[i])
     }
 }}
 // function to process grid coordinates
-function geocodeLatLng(geocoder, map, infowindow,lat,long, markVar) {
+function geocodeLatLng(geocoder, googleMap, infowindow,lat,long, markVar) {
 latlong = {
     lat: parseFloat(lat),
     lng: parseFloat(long),
@@ -67,7 +74,7 @@ geocoder.geocode({ location: latlong })
     .then((response) => {
     if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
-        markVar.setMap(map)
+        markVar.setMap(googleMap)
         // infowindow.setContent(response.results[0].formatted_address);
         // infowindow.open(map, markVar);
     } else {
@@ -83,7 +90,7 @@ geocoder.geocode(request)
     const { results } = result;
     // map.setCenter(results[0].geometry.location);
     markVar.setPosition(results[0].geometry.location);
-    markVar.setMap(map);
+    markVar.setMap(googleMap);
     // infowindow.setContent(results[0].formatted_address);
     // infowindow.open(map, markVar);
     return results;
