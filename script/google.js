@@ -16,6 +16,7 @@ let longitude
 let input;
 let latlngStr;
 let latlng;
+
 let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.81388888888888", lng: "71.20805555555556"}},
 {locationType: "country", country: "Mexico", latlng: {lat: "", lng: ""}},
 {locationType: "coord", country: "", latlng: {lat: "49.8486", lng: "3.2864"}},
@@ -26,8 +27,8 @@ let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.8
 
 function initMap() {
 map = new google.maps.Map(document.getElementById("map"), {
-zoom: 4.4,
-center: { lat: latitude = 30, lng: longitude = 30 },
+zoom: 3.3,
+center: { lat: latitude = 30, lng: longitude = 15 },
 mapTypeControl: false,
 });
 geocoder = new google.maps.Geocoder();
@@ -61,6 +62,7 @@ latlong = {
     lat: parseFloat(lat),
     lng: parseFloat(long),
 };
+
 geocoder.geocode({ location: latlong })
     .then((response) => {
     if (response.results[0]) {
