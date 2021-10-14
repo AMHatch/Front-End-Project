@@ -83,11 +83,11 @@
             </div>
         </div>
     </div>
-    <div>
+
+    <!-- Where search cards and map will populate -->
+    <div class="container-fluid" id="#searchDateDiv">
         <img src="images/find-a-date-neon.png" class="center today-img mt-5">
     </div>
-
-    <div class="container-fluid" id="searchDateDiv"></div>
 
     <form class="container-fluid mt-5">
         <!-- <div> -->
@@ -150,6 +150,9 @@
             <!-- </div> -->
         </div>
         <!-- <div style="padding: 2%"></div> -->
+
+        <!-- will contain elements added to DOM from js when search -->
+
         <div>
             <input id="submit-button" type="image" src="images/take-me-back-button-up.png" class="center mt-5 button" style="width: 8rem;" alt="Take Me Back - button">
         </div>
@@ -161,10 +164,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="script/todaysDate.js"></script>
     <script src="script/todaysWhereBack.js"></script>
-    <script src="script/elementCreationFunctions.js"></script>
+    <script src="script/elementCreationFunction.js"></script>
     <script src="script/script.js"></script>
     <script src="script/index.js"></script>
     <script src="script/google.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgqphwvUhqrA0A9S_1AgA_MvWXnEHHzak&callback=initMap"></script>
+    <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgqphwvUhqrA0A9S_1AgA_MvWXnEHHzak&callback=initMap"
+></script>
 </body>
 </html>

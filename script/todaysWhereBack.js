@@ -12,7 +12,6 @@ let event2ContentEl = document.querySelector("#event2Content")
 let event3TitleEl = document.querySelector("#event3Title")
 let event3ContentEl = document.querySelector("#event3Content")
 
-
 event1TitleEl.textContent = `Year: ${chosenEventsList[0].year}`
 event1ContentEl.textContent = `${chosenEventsList[0].description}`
 event2TitleEl.textContent = `Year: ${chosenEventsList[1].year}`
