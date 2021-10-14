@@ -5,6 +5,7 @@
 #CDD7D6 Light Grey    light grey
 #B3A394 Grullo     lightbrownish grey
 #FFFFFF White        it's white
+#C4DDFE light blue
 */
 
 body{
@@ -14,7 +15,9 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top; */
-    margin: 0px;
+    height: 100vh;
+    padding: 0;
+    margin: 0 auto;
 }
 .center{
     display: block;
@@ -25,13 +28,163 @@ body{
     max-height: 265px;
     overflow-y: auto;
 }
+.bg-bbBlue{
+    background-color: #C4DDFE;
+
+}
+.bg-lGrey{
+    background-color: #CDD7D6;
+}
+.bg-white{
+    background-color: #FFFFFF;
+}
+.bg-oxford-blue {
+    background-color: #102542;
+}
+.bg-off-white {
+    background-color: #e9ecee;
+}
 .menu-bg{
+    /* Ryan's choices */
     background-color: #C61C26;
     /* background-color: #f8d753; */
+    
+    /* Original Color Palette Options */
+    /* background-color: #f87060; */
 }
 .text-white{
     color: white;
 }
+.text-oxford-blue {
+    color: #102542;
+}
+
 select:hover{
     background-color: #f8d753;
+}
+
+.border-light-grey {
+    border: 2px solid #CDD7D6;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-light-blue {
+    background-color: #C4DDFE;
+}
+.bg-light-grey {
+    background-color: #e5e5e8
+}
+
+.card {
+    width: 100%;
+    height: 12rem;
+    /* border-radius: 4px; */
+}
+
+.text-oxford{
+    color: #102542;
+}
+select:hover{
+    background-color: #f8d753;
+}
+.map{
+    height: 100%;
+}
+
+a{ display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #102542;
+}
+
+.header-img {
+    width: 90%;
+}
+
+.today-img {
+    width: 70%;
+}
+
+.nav-brand-img {
+    width: 20%;
+}
+
+.navbar {
+    height: 10vh;
+    border-radius: 2px;
+}
+
+.button {
+    box-shadow: 2px 2px 2px 1.5px rgba(16, 37, 66, 0.35)
+}
+
+.button:hover {
+    box-shadow: 2px 2px 2px 1px rgba(63, 81, 107, 0.3)
+}
+
+.button:active {
+    box-shadow: 0px 0px 0px 0px rgba(16, 37, 66, 0.4)
+}
+
+.subheading-hr {
+    color: #C4DDFE;
+}
+
+@media only screen and (max-width: 425px) {
+    .today-img {
+        width: 90%;
+    }
+    /* .card {
+        width: 75%;
+    } */
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        height: 14rem;
+    }
+    .navbar {
+        height: 5vh;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .navbar {
+        height: 6vh;
+    }
+    .header-img {
+        width: 70%;
+    }
+    .today-img {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    body {
+        margin: 0 auto;
+    }
+    .header-img {
+        width: 50%
+    }
+    .today-img {
+        width: 40%
+    }
+    .navbar {
+        height: 5vh;
+    }
+
+}
+
+@media only screen and (min-width: 2560px) {
+
+    body {
+        margin: auto;
+    }
+    .navbar {
+        height: 3vh;
+    }
 }
