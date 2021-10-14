@@ -14,7 +14,7 @@ async function initialization(){
 
 initialization()
 
-submitButton.addEventListener("click", (e) => {
+submitButton.addEventListener("click", async (e) => {
     e.preventDefault();
     let date = month.value + "/" + day.value;
     if (date === "02/30" || date === "02/31" || date === "04/31" || date === "06/31" || date === "09/31" || date === "11/31"){
@@ -22,7 +22,7 @@ submitButton.addEventListener("click", (e) => {
     }
     else{
         //work in progress
-        const mapMarkers = main(date)
+        const mapMarkers = await main(date)
         sortObj(mapMarkers)
     };
     

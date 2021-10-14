@@ -11,10 +11,10 @@ let longitude
 let latlngStr;
 let latlng;
 
-let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.81388888888888", lng: "71.20805555555556"}},
-{locationType: "country", country: "Mexico", latlng: {lat: "", lng: ""}},
-{locationType: "coord", country: "", latlng: {lat: "49.8486", lng: "3.2864"}},
-]
+// let chosenEventsList = [{locationType: "coord", country: "", latlng: {lat: "46.81388888888888", lng: "71.20805555555556"}},
+// {locationType: "country", country: "Mexico", latlng: {lat: "", lng: ""}},
+// {locationType: "coord", country: "", latlng: {lat: "49.8486", lng: "3.2864"}},
+// ]
 
 
 // initializing the map
