@@ -140,8 +140,10 @@ function sortObj(objArray){
 
 Victoria Walker :
  https://github.com/v-walker
+- research and development
 - historical APIs and Front End integration
-- TBD
+- Front end development of home and search page HTML, JS, and CSS
+- responsive design
 
 Hunter Hutchisson : 
 https://github.com/hunterhutchisson
