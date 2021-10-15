@@ -33,26 +33,7 @@ body{
 .bg-med-gray{
     background-color: #222222;
 }
-.bg-lGrey{
-    background-color: #CDD7D6;
-}
-.bg-white{
-    background-color: #FFFFFF;
-}
-.bg-oxford-blue {
-    background-color: #102542;
-}
-.bg-off-white {
-    background-color: #e9ecee;
-}
-.menu-bg{
-    /* Ryan's choices */
-    background-color: #C61C26;
-    /* background-color: #f8d753; */
-    
-    /* Original Color Palette Options */
-    /* background-color: #f87060; */
-}
+
 .text-white{
     color: white;
 }
@@ -139,31 +120,26 @@ a{
 }
 
 .subheading-hr {
-    color: #C4DDFE;
+    color: white;
+}
+
+.card-hr {
+    color: white;
 }
 
 @media only screen and (max-width: 425px) {
     .today-img {
         width: 90%;
     }
-    /* .card {
-        width: 75%;
-    } */
 }
 
 @media only screen and (max-width: 768px) {
     .card {
         height: 14rem;
     }
-    .navbar {
-        height: 5vh;
-    }
 }
 
 @media only screen and (min-width: 1024px) {
-    .navbar {
-        height: 6vh;
-    }
     .header-img {
         width: 70%;
     }
@@ -182,9 +158,6 @@ a{
     .today-img {
         width: 40%
     }
-    .navbar {
-        height: 5vh;
-    }
 
 }
 html{
@@ -197,8 +170,5 @@ html{
 
     body {
         margin: auto;
-    }
-    .navbar {
-        height: 3vh;
     }
 }
