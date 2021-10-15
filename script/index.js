@@ -1,4 +1,4 @@
-let submitButton = document.querySelector("#submit-button");
+let submitButtonIndex = document.querySelector("#submit-button-index");
 let month = document.querySelector("#month");
 let day = document.querySelector("#day");
 let year = document.querySelector("#year");
@@ -34,16 +34,16 @@ function insertData(chosenEventsList) {
     event3ContentEl.textContent = `${chosenEventsList[2].description}`;
 }
 
-submitButton.addEventListener("click", async (e) => {
+
+submitButtonIndex.addEventListener("click", async (e) => {
     e.preventDefault();
-    let date = month.value + "/" + day.value;
-    console.log(date);
-    if (date === "2/30" || date === "2/31" || date === "4/31" || date === "6/31" || date === "9/31" || date === "11/31"){
+    let dateFromIndex = month.value + "/" + day.value;
+    console.log(dateFromIndex);
+    if (dateFromIndex === "2/30" || dateFromIndex === "2/31" || dateFromIndex === "4/31" || dateFromIndex === "6/31" || dateFromIndex === "9/31" || dateFromIndex === "11/31"){
         alert("Please enter a valid date.")
     }
     else{
-        const mapMarkers = await main(date)
-        insertData(mapMarkers)
-        sortObj(mapMarkers)
+        localStorage.setItem('storedDate', dateFromIndex);
+        window.location.assign('search.html')
     }; 
 });
