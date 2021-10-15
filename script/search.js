@@ -1,14 +1,12 @@
-let submitButton = document.querySelector("#submit-button");
+let submitButtonSearch = document.querySelector("#submit-button-search");
 let month = document.querySelector("#month");
 let day = document.querySelector("#day");
 let year = document.querySelector("#year");
 let desc = document.querySelector("#desc");
 let map = document.querySelector("#map");
 
-async function initialization(){
-    const today = new Date()
-    const todaysDate = (today.getMonth()+1)+'/'+today.getDate();
-    const mapMarkers = await main(todaysDate)
+async function searchInitialization(inputDate){
+    const mapMarkers = await main(inputDate)
     insertData(mapMarkers)
     sortObj(mapMarkers)
 }
@@ -34,7 +32,7 @@ function insertData(chosenEventsList) {
     event3ContentEl.textContent = `${chosenEventsList[2].description}`;
 }
 
-submitButton.addEventListener("click", async (e) => {
+submitButtonSearch.addEventListener("click", async (e) => {
     e.preventDefault();
     let date = month.value + "/" + day.value;
     console.log(date);
@@ -42,6 +40,7 @@ submitButton.addEventListener("click", async (e) => {
         alert("Please enter a valid date.")
     }
     else{
+        //work in progress
         const mapMarkers = await main(date)
         insertData(mapMarkers)
         sortObj(mapMarkers)
