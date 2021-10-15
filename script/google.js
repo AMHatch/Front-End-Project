@@ -5,7 +5,7 @@ let marker3;
 let geocoder;
 let infowindow;
 let response;
-let searchObj ;
+let searchObj;
 let latitude;
 let longitude;
 let latlngStr;
@@ -135,22 +135,22 @@ function sortObj(objArray){
 }};
 // function to process grid coordinates
 
-
-function geocodeLatLng(geocoder, googleMap, infowindow,lat,long, markVar) {
-latlong = {
+function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
+  latlong = {
     lat: parseFloat(lat),
     lng: parseFloat(long),
-};
-geocoder.geocode({ location: latlong })
+  };
+  geocoder
+    .geocode({ location: latlong })
     .then((response) => {
-    if (response.results[0]) {
+      if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
-        markVar.setMap(googleMap)
+        markVar.setMap(googleMap);
         // infowindow.setContent(response.results[0].formatted_address);
         // infowindow.open(googleMap, markVar);
-    } else {
+      } else {
         window.alert("No results found");
-        }
+      }
     })
     .catch((e) => window.alert("Geocoder failed due to: " + e));
 };
