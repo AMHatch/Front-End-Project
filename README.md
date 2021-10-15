@@ -14,11 +14,12 @@ screenshot or video placeholder
 - APIs:
     - Google Maps API
     - Google Geocode API
-    - WikiPedia apis
+    - WikiPedia API
     - WikiPedia scrapes
-    - swagger
+    - Swagger API
 
 - Bootstrap
+
 - AJAX
 
 ## MVP
@@ -31,6 +32,7 @@ Use various API's to compile data on the event, it's historical location, and di
 
 ## Strech Goals
 
+Dad jokes API
 
 add in a travel api to show travel options to the location. 
 
@@ -48,13 +50,11 @@ impressive code snippets placeholder
 
 Victoria Walker :
  https://github.com/v-walker
-
 - historical APIs and Front End integration
 - TBD
 
 Hunter Hutchisson : 
 https://github.com/hunterhutchisson
-
 - historical APIs and back end integration
 - TBD
 
@@ -67,7 +67,7 @@ Ryan Donald :
 
 Andrew Hatch :
  https://github.com/AMHatch
-
  - Google Maps API, and Google Geocode API integration
+ - Google Maps styling and customiztion
  - TBD
 
