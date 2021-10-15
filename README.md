@@ -14,16 +14,17 @@ screenshot or video placeholder
 - APIs:
     - Google Maps API
     - Google Geocode API
-    - WikiPedia apis
+    - WikiPedia API
     - WikiPedia scrapes
-    - swagger
+    - Swagger API
 
 - Bootstrap
+
 - AJAX
 
 ## MVP
  
-Mobile responsive webpage that displays the data for this day in history and allow user to select a date of thier choice. 
+Build a mobile responsive webpage that displays the data for this day in history and also allows the user to select a date of their choice. 
 Use various API's to compile data on the event, it's historical location, and displays its modern day location using Google maps. and a dad joke. 
 
 404 error catching page with dad jokes. Because dad jokes make everything better.
@@ -31,6 +32,7 @@ Use various API's to compile data on the event, it's historical location, and di
 
 ## Strech Goals
 
+Dad jokes API
 
 add in a travel api to show travel options to the location. 
 
@@ -48,26 +50,24 @@ impressive code snippets placeholder
 
 Victoria Walker :
  https://github.com/v-walker
-
 - historical APIs and Front End integration
 - TBD
 
 Hunter Hutchisson : 
 https://github.com/hunterhutchisson
-
 - historical APIs and back end integration
 - TBD
 
 Ryan Donald :
  https://github.com/ryanthomasdonald
 - creative director
-- front end development of landing page HTML, JS and CSS
+- Front end development of landing page HTML, JS and CSS
 - TBD
  
 
 Andrew Hatch :
  https://github.com/AMHatch
-
  - Google Maps API, and Google Geocode API integration
+ - Google Maps styling and customiztion
  - TBD
 

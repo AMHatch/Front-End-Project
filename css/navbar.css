@@ -8,8 +8,8 @@
 
 .nav-item a {
     display: inline-block;
-    margin-top: 14px;
-    padding: 2px 15px;
+    margin-top: 10px;
+    padding: 1px 15px;
     text-decoration: none;
     color: white;
     }
@@ -31,6 +31,9 @@
     align-items: center;
     font-family: 'Roboto', sans-serif;
     border-bottom: 0.3px solid white;
+    padding: 0px;
+    height: 46px;
+    /* margin-top: 0px; */
 }
 .nav-links {
     display: flex;
@@ -38,6 +41,5 @@
 } 
 nav {
     width: 100%;
-    z-index: 100;
+    z-index: 4;
 }
-
