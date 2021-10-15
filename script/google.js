@@ -12,7 +12,7 @@ let latitude;
 let longitude;
 let latlngStr;
 let latlng;
-// let chosenEventsList;
+
 
 // initializing the map
 let options = {
@@ -87,18 +87,15 @@ let options = {
     ],
 };
 function initInfoWindow(){
-    infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-    infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-    infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+    infowindow = new google.maps.InfoWindow({content: "Year: " + chosenEventsList[0].year,});
+    infowindow2 = new google.maps.InfoWindow({content: "Year: " +  chosenEventsList[1].year,});
+    infowindow3 = new google.maps.InfoWindow({content: "Year: " + chosenEventsList[2].year,});
 }
 
 
 function initMap() {
     googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
     geocoder = new google.maps.Geocoder();
-    // infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-    // infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-    // infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
 
     const pointer = "images/map-pointer.png"
     marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
@@ -150,8 +147,7 @@ function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
     lat: parseFloat(lat),
     lng: parseFloat(long),
     };
-    geocoder
-    .geocode({ location: latlong })
+    geocoder.geocode({ location: latlong })
     .then((response) => {
         if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
