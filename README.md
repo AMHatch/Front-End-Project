@@ -54,16 +54,14 @@ function scrapeWikipedia(link) {
       const doc = parser.parseFromString(wikiPageText, "text/html");
       const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
       let countryNode;
-  
       // Checks to see if a country field exists to scrape coordinates
       infoBoxLabelList.forEach((element) => {
         if (element.textContent == "Country") {
           countryNode = element;
         }
-      });
-  
+        });
       // Option 1: Check lat long dms
-      if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
+        if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
         const latString = doc.querySelector(".latitude").textContent;
         const longString = doc.querySelector(".longitude").textContent;
         const lat = dmsConverter(latString).toString();
@@ -73,9 +71,9 @@ function scrapeWikipedia(link) {
           locationType: "coord",
           latlng: { lat, lng },
         });
-      }
+        }
       // Option 2: Check lat long decimal
-      else if (doc.querySelector(".geo-dec")) {
+        else if (doc.querySelector(".geo-dec")) {
         const parent = doc.querySelector(".geo-dec");
         const content = parent.textContent;
         const contentArray = content.split("°");
@@ -87,7 +85,7 @@ function scrapeWikipedia(link) {
           locationType: "coord",
           latlng: { lat, lng },
         });
-      }
+        }
       // Option 3: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
@@ -98,12 +96,11 @@ function scrapeWikipedia(link) {
           locationType: "country",
           latlng: { lat: "", lng: "" },
         });
-      }
+        }
       // Option 4: Found Nothing
-      else {
+        else {
         res(null);
-      }
-      
+        }
     }catch (ex) {
       //possible 404 page link, stretch goal
       console.log(ex);
@@ -113,7 +110,7 @@ function scrapeWikipedia(link) {
 // Written by  Hunter Hutchisson and Victoria Walker
 ```
 ```js
-// function to sort incoming Object data by location datatype.
+// function to sort incoming Object data by location datatype and assign it a marker.
 function sortObj(objArray){
     for(let i = 0; i < objArray.length; i++){
         let markerArr = [marker,marker2,marker3];
