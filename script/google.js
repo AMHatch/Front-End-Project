@@ -11,10 +11,9 @@ let longitude
 let latlngStr;
 let latlng;
 
-chosenEventsList = [{country: '', locationType: 'coord', latlng: {lat: '50.06026111111111', lng: '8.26581111111111'}, description: 'Manfred von Richthofen, a.k.a. The Red Baron, shoo…nal victories before his death the following day.', year: '1918'}, 
-{country: '', locationType: 'coord', latlng: {lat: '42', lng: '43'}, description: 'The Georgian king, Erekle II, abandoned by his Rus…, wins a victory over Ottoman forces at Aspindza.', year: '1770'},
- {country: '', locationType: 'coord', latlng: {lat: '59.32944444444445', lng: '18.06861111111111'}, description: 'The sun dog phenomenon observed over Stockholm and depicted in the famous painting Vädersolstavlan.', year: '1535'}]
-
+// chosenEventsList = [{country: '', locationType: 'coord', latlng: {lat: '50.06026111111111', lng: '8.26581111111111'}, description: 'Manfred von Richthofen, a.k.a. The Red Baron, shoo…nal victories before his death the following day.', year: '1918'}, 
+// {country: '', locationType: 'coord', latlng: {lat: '42', lng: '43'}, description: 'The Georgian king, Erekle II, abandoned by his Rus…, wins a victory over Ottoman forces at Aspindza.', year: '1770'},
+//  {country: '', locationType: 'coord', latlng: {lat: '59.32944444444445', lng: '18.06861111111111'}, description: 'The sun dog phenomenon observed over Stockholm and depicted in the famous painting Vädersolstavlan.', year: '1535'}]
 
 // initializing the map
 let options = {
@@ -43,7 +42,7 @@ let options = {
     {
         featureType: "poi.park",
         elementType: "labels.text.fill",
-        stylers: [{ color:"#CDE4DA" }],
+        stylers: [{ color: "#ffffff" }],
     },
     {
         featureType: "road",
@@ -73,7 +72,7 @@ let options = {
     {
         featureType: "road.highway",
         elementType: "labels.text.fill",
-        stylers: [{ color: "#f3d19c" }],
+        stylers: [{ color: "#ffffff" }],
     },
     {
         featureType: "transit",
@@ -106,14 +105,14 @@ let options = {
 function initMap() {
 googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
 geocoder = new google.maps.Geocoder();
-infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+// infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
+// infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
+// infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
 
 const pointer = "images/map-pointer.png"
-marker = new google.maps.Marker({ googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
-marker2 = new google.maps.Marker({googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
-marker3 = new google.maps.Marker({googleMap,icon:pointer,animation: google.maps.Animation.DROP,});
+marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+marker2 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+marker3 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
 
 marker.addListener("click", () => {
     infowindow.open({
@@ -137,9 +136,9 @@ marker3.addListener("click", () => {
     });
 });
 
-googleMap.addListener("click", (e) => {
-sortObj(chosenEventsList)
-});
+// googleMap.addListener("click", (e) => {
+// sortObj(chosenEventsList)
+// });
 }
 
 // function to sort incoming object data by location data type
