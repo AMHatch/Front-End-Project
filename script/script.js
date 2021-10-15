@@ -116,11 +116,12 @@ function parseMapEvent(OG, description, year) {
   };
 }
 
+let chosenEventsList;
 // Main
 async function main(date) {
   try {
     console.log(date);
-    const chosenEventsList = [];
+    chosenEventsList = [];
     const eventsJSON = await fetch(
       `https://byabbe.se/on-this-day/${date}/events.json`
     );

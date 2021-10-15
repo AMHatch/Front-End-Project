@@ -4,12 +4,15 @@ let marker2;
 let marker3;
 let geocoder;
 let infowindow;
+let infowindow2;
+let infowindow3;
 let response;
 let searchObj;
 let latitude;
 let longitude;
 let latlngStr;
 let latlng;
+// let chosenEventsList;
 
 // initializing the map
 let options = {
@@ -82,42 +85,49 @@ let options = {
             stylers: [{ color: "#000000" }],
         },
     ],
-    };
-    
+};
+function initInfoWindow(){
+    infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
+    infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
+    infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+}
+
+
 function initMap() {
-googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
-geocoder = new google.maps.Geocoder();
-// infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-// infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-// infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+    googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
+    geocoder = new google.maps.Geocoder();
+    // infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
+    // infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
+    // infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
 
-const pointer = "images/map-pointer.png"
-marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
-marker2 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
-marker3 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+    const pointer = "images/map-pointer.png"
+    marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+    marker2 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+    marker3 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
 
-marker.addListener("click", () => {
-    infowindow.open({
-    anchor: marker,
-    googleMap,
-    shouldFocus: false,
+    marker.addListener("click", () => {
+        infowindow.open({
+        anchor: marker,
+        googleMap,
+        shouldFocus: false,
+        });
     });
-});
-marker2.addListener("click", () => {
-    infowindow2.open({
-    anchor: marker2,
-    googleMap,
-    shouldFocus: false,
-    });
-});
-marker3.addListener("click", () => {
-    infowindow3.open({
-    anchor: marker3,
-    googleMap,
-    shouldFocus: false,
-    });
-});
 
+    marker2.addListener("click", () => {
+        infowindow2.open({
+        anchor: marker2,
+        googleMap,
+        shouldFocus: false,
+        });
+    });
+
+    marker3.addListener("click", () => {
+        infowindow3.open({
+        anchor: marker3,
+        googleMap,
+        shouldFocus: false,
+        });
+    });
 };
 
 // function to sort incoming object data by location data type
@@ -133,39 +143,35 @@ function sortObj(objArray){
                 geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markerArr[i])
             }
 }};
-// function to process grid coordinates
 
+// function to process grid coordinates
 function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
-  latlong = {
+    latlong = {
     lat: parseFloat(lat),
     lng: parseFloat(long),
-  };
-  geocoder
+    };
+    geocoder
     .geocode({ location: latlong })
     .then((response) => {
-      if (response.results[0]) {
+        if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
         markVar.setMap(googleMap);
-        // infowindow.setContent(response.results[0].formatted_address);
-        // infowindow.open(googleMap, markVar);
-      } else {
+        initInfoWindow()
+        } else {
         window.alert("No results found");
-      }
+        }
     })
     .catch((e) => window.alert("Geocoder failed due to: " + e));
 };
+
 //function to process country 
-
-
 function geocode(request,markVar,infowindow) {
 geocoder.geocode(request)
 .then((result) => {
     const { results } = result;
-    // googleMap.setCenter(results[0].geometry.location);
     markVar.setPosition(results[0].geometry.location);
     markVar.setMap(googleMap);
-    // infowindow.setContent(results[0].formatted_address);
-    // infowindow.open(googleMap, markVar);
+    initInfoWindow()
     return results;
 })
 .catch((e) => {
