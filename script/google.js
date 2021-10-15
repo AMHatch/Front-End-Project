@@ -1,4 +1,4 @@
-let googleMap
+let googleMap;
 let marker;
 let marker2;
 let marker3;
@@ -6,8 +6,8 @@ let geocoder;
 let infowindow;
 let response;
 let searchObj ;
-let latitude
-let longitude
+let latitude;
+let longitude;
 let latlngStr;
 let latlng;
 
@@ -118,7 +118,7 @@ marker3.addListener("click", () => {
     });
 });
 
-}
+};
 
 // function to sort incoming object data by location data type
 function sortObj(objArray){
@@ -132,7 +132,7 @@ function sortObj(objArray){
                 let long = objArray[i].latlng.lng
                 geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markerArr[i])
             }
-}}
+}};
 // function to process grid coordinates
 
 
@@ -153,7 +153,7 @@ geocoder.geocode({ location: latlong })
         }
     })
     .catch((e) => window.alert("Geocoder failed due to: " + e));
-}
+};
 //function to process country 
 
 
@@ -171,5 +171,5 @@ geocoder.geocode(request)
 .catch((e) => {
     alert("Geocode was not successful for the following reason: " + e);
 });
-}
+};
 
