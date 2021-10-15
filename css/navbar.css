@@ -8,8 +8,8 @@
 
 .nav-item a {
     display: inline-block;
-    margin-top: 14px;
-    padding: 2px 15px;
+    margin-top: 10px;
+    padding: 1px 15px;
     text-decoration: none;
     color: white;
     }
@@ -32,7 +32,8 @@
     font-family: 'Roboto', sans-serif;
     border-bottom: 0.3px solid white;
     padding: 0px;
-    height: 5.3vh;
+    height: 46px;
+    /* margin-top: 0px; */
 }
 .nav-links {
     display: flex;
