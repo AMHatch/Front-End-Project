@@ -1,23 +1,23 @@
-function dmsConverter(string) {
-  let beforeDecimal = parseFloat(string.split("°")[0]);
-  let afterDecimal = string.split("°")[1];
-  if (string.includes("′") && string.includes("″")) {
-    let minuteSplitArr = afterDecimal.split("′");
-    let minutes = parseFloat(minuteSplitArr[0]);
-    let minutesConverted = minutes / 60;
-    let secondsWithDirection = minuteSplitArr[1];
-    let seconds = secondsWithDirection.split("″")[0];
-    let secondsConverted = seconds / 3600;
-    return beforeDecimal + minutesConverted + secondsConverted;
-  }
-  // // // formats for degrees, minutes, seconds
-  else if (string.includes("″")) {
-    let minutes = parseFloat(afterDecimal.split("′")[0]);
-    let minutesConverted = minutes / 60;
-    return beforeDecimal + minutesConverted;
-  }
-  return beforeDecimal;
-}
+// function dmsConverter(string) {
+//   let beforeDecimal = parseFloat(string.split("°")[0]);
+//   let afterDecimal = string.split("°")[1];
+//   if (string.includes("′") && string.includes("″")) {
+//     let minuteSplitArr = afterDecimal.split("′");
+//     let minutes = parseFloat(minuteSplitArr[0]);
+//     let minutesConverted = minutes / 60;
+//     let secondsWithDirection = minuteSplitArr[1];
+//     let seconds = secondsWithDirection.split("″")[0];
+//     let secondsConverted = seconds / 3600;
+//     return beforeDecimal + minutesConverted + secondsConverted;
+//   }
+//   // // // formats for degrees, minutes, seconds
+//   else if (string.includes("″")) {
+//     let minutes = parseFloat(afterDecimal.split("′")[0]);
+//     let minutesConverted = minutes / 60;
+//     return beforeDecimal + minutesConverted;
+//   }
+//   return beforeDecimal;
+// }
 
 function shuffleEvents(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
@@ -43,40 +43,51 @@ function scrapeWikipedia(link) {
       const doc = parser.parseFromString(wikiPageText, "text/html");
       const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
       let countryNode;
-  
       // Checks to see if a country field exists to scrape coordinates
       infoBoxLabelList.forEach((element) => {
         if (element.textContent == "Country") {
           countryNode = element;
         }
       });
-  
+      // Option 1: Check for coordinates
+      if (doc.querySelector(".geo")) {
+        const coordString = doc.querySelector(".geo").textContent;
+        const coordArr = coordString.split('; ')
+        const lat = coordArr[0]
+        const lng = coordArr[1]
+        res({
+          country: "",
+          locationType: "coord",
+          latlng: { lat, lng },
+        });
+      }
       // Option 1: Check lat long dms
-      if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-        const latString = doc.querySelector(".latitude").textContent;
-        const longString = doc.querySelector(".longitude").textContent;
-        const lat = dmsConverter(latString).toString();
-        const lng = dmsConverter(longString).toString();
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
-        });
-      }
-      // Option 2: Check lat long decimal
-      else if (doc.querySelector(".geo-dec")) {
-        const parent = doc.querySelector(".geo-dec");
-        const content = parent.textContent;
-        const contentArray = content.split("°");
-        const contentArray2 = contentArray[1].split(" ");
-        const lng = contentArray[0];
-        const lat = contentArray2[1];
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
-        });
-      }
+      // if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
+      //   const latString = doc.querySelector(".latitude").textContent;
+      //   const longString = doc.querySelector(".longitude").textContent;
+      //   const lat = dmsConverter(latString).toString();
+      //   const lng = dmsConverter(longString).toString();
+      //   res({
+      //     country: "",
+      //     locationType: "coord",
+      //     latlng: { lat, lng },
+      //   });
+      // }
+      // // Option 2: Check lat long decimal
+      // else if (doc.querySelector(".geo-dec")) {
+      //   const parent = doc.querySelector(".geo-dec");
+      //   const content = parent.textContent;
+      //   console.log(content);
+      //   const contentArray = content.split("°");
+      //   const contentArray2 = contentArray[1].split(" ");
+      //   const lng = contentArray[0];
+      //   const lat = contentArray2[1];
+      //   res({
+      //     country: "",
+      //     locationType: "coord",
+      //     latlng: { lat, lng },
+      //   });
+      // }
       // Option 3: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
@@ -92,7 +103,6 @@ function scrapeWikipedia(link) {
       else {
         res(null);
       }
-      
     }catch (ex) {
       //possible 404 page link, stretch goal
       console.log(ex);
