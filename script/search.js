@@ -9,12 +9,12 @@ console.log(storedDateFromIndex);
 
 async function searchInitialization(date){
     const mapMarkers = await main(date)
-    insertData(mapMarkers)
+    insertData(mapMarkers, date)
     sortObj(mapMarkers)
 }
 searchInitialization(storedDateFromIndex)
 
-function insertData(chosenEventsList) {
+function insertData(chosenEventsList, date) {
     let event1TitleEl = document.querySelector("#event1Title");
     let event1ContentEl = document.querySelector("#event1Content");
 
@@ -25,11 +25,11 @@ function insertData(chosenEventsList) {
     let event3TitleEl = document.querySelector("#event3Title")
     let event3ContentEl = document.querySelector("#event3Content");
 
-    event1TitleEl.textContent = `Year: ${chosenEventsList[0].year}`;
+    event1TitleEl.textContent = `Date: ${date}/${chosenEventsList[0].year}`;
     event1ContentEl.textContent = `${chosenEventsList[0].description}`;
-    event2TitleEl.textContent = `Year: ${chosenEventsList[1].year}`;
+    event2TitleEl.textContent = `Date: ${date}/${chosenEventsList[1].year}`;
     event2ContentEl.textContent = `${chosenEventsList[1].description}`;
-    event3TitleEl.textContent = `Year: ${chosenEventsList[2].year}`;
+    event3TitleEl.textContent = `Date: ${date}/${chosenEventsList[2].year}`;
     event3ContentEl.textContent = `${chosenEventsList[2].description}`;
 }
 function dataReset() {
@@ -60,7 +60,7 @@ submitButtonSearch.addEventListener("click", async (e) => {
     else{
         dataReset()
         const mapMarkers = await main(date)
-        insertData(mapMarkers)
+        insertData(mapMarkers, date)
         sortObj(mapMarkers)
     }; 
 });
