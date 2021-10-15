@@ -41,8 +41,3 @@ nav {
     z-index: 100;
 }
 
-.sticky-vw{
-    position: sticky;
-    top:0px;
-    z-index: 105;
-}
