@@ -24,12 +24,14 @@ screenshot or video placeholder
 ## MVP
  
 Build a mobile responsive webpage that displays the data for this day in history and also allows the user to select a date of their choice. 
-Use various API's to compile data on the event, it's historical location, and displays its modern day location using Google maps. and a dad joke. 
+Use various API's to compile data on the event, it's historical location, and displays its modern day location using Google maps.
 
-404 error catching page with dad jokes. Because dad jokes make everything better.
+
 
 
 ## Strech Goals
+
+404 error catching page with dad jokes. Because dad jokes make everything better.
 
 Dad jokes API
 
