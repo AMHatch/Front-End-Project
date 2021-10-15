@@ -137,7 +137,7 @@ function sortObj(objArray){
 ## Developers:
 
 Victoria Walker :
- https://github.com/v-walker
+https://github.com/v-walker
 - historical APIs and Front End integration
 - TBD
 
@@ -147,15 +147,14 @@ https://github.com/hunterhutchisson
 - TBD
 
 Ryan Donald :
- https://github.com/ryanthomasdonald
-- creative director
-- Front end development of landing page HTML, JS and CSS
-- TBD
- 
+https://github.com/ryanthomasdonald
+- Creative Director
+- Front end development of landing/about page using HTML, CSS, and JavaScript
+- Created custom assets with Adobe Photoshop
 
 Andrew Hatch :
- https://github.com/AMHatch
- - Google Maps API, and Google Geocode API integration
- - Google Maps styling and customiztion
- - TBD
+https://github.com/AMHatch
+- Google Maps API, and Google Geocode API integration
+- Google Maps styling and customiztion
+- TBD
 
