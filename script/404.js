@@ -1,6 +1,6 @@
-let dadJoke = document.querySelector("#dad-joke")
+// let dadJoke = document.querySelector("#dad-joke")
 
-fetch("https://icanhazdadjoke.com/")
-.then((randomJoke) => {
-    console.log(randomJoke)
-})
+// fetch("https://icanhazdadjoke.com/")
+// .then((randomJoke) => {
+//     console.log(randomJoke)
+// })

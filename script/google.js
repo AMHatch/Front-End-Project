@@ -12,7 +12,7 @@ let latitude;
 let longitude;
 let latlngStr;
 let latlng;
-// let chosenEventsList;
+
 
 // initializing the map
 let options = {
@@ -87,20 +87,17 @@ let options = {
     ],
 };
 function initInfoWindow(){
-    infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-    infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-    infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+    infowindow = new google.maps.InfoWindow({content: "Year: " + chosenEventsList[0].year,});
+    infowindow2 = new google.maps.InfoWindow({content: "Year: " +  chosenEventsList[1].year,});
+    infowindow3 = new google.maps.InfoWindow({content: "Year: " + chosenEventsList[2].year,});
 }
 
 
 function initMap() {
     googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
     geocoder = new google.maps.Geocoder();
-    // infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
-    // infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
-    // infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
 
-    const pointer = "images/map-pointer.png"
+    const pointer = "images/map-pointer.png";
     marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
     marker2 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
     marker3 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
@@ -133,16 +130,17 @@ function initMap() {
 // function to sort incoming object data by location data type
 function sortObj(objArray){
     for(let i = 0; i < objArray.length; i++){
-        let markerArr = [marker,marker2,marker3]
+        let markerArr = [marker,marker2,marker3];
             if (objArray[i].locationType == 'country'){
                 geocode({ address: objArray[i].country },markerArr[i]);
             }
             else if(objArray[i].locationType == 'coord'){
-                let lat = objArray[i].latlng.lat
-                let long = objArray[i].latlng.lng
-                geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markerArr[i])
-            }
-}};
+                let lat = objArray[i].latlng.lat;
+                let long = objArray[i].latlng.lng;
+                geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markerArr[i]);
+        };
+    };
+};
 
 // function to process grid coordinates
 function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
@@ -150,8 +148,7 @@ function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
     lat: parseFloat(lat),
     lng: parseFloat(long),
     };
-    geocoder
-    .geocode({ location: latlong })
+    geocoder.geocode({ location: latlong })
     .then((response) => {
         if (response.results[0]) {
         markVar.setPosition(response.results[0].geometry.location);
@@ -161,21 +158,21 @@ function geocodeLatLng(geocoder, googleMap, infowindow, lat, long, markVar) {
         window.alert("No results found");
         }
     })
-    .catch((e) => window.alert("Geocoder failed due to: " + e));
+    .catch((e) => window.alert("Geocode was not successful for the following reason: " + e));
 };
 
 //function to process country 
 function geocode(request,markVar,infowindow) {
-geocoder.geocode(request)
-.then((result) => {
-    const { results } = result;
-    markVar.setPosition(results[0].geometry.location);
-    markVar.setMap(googleMap);
-    initInfoWindow()
-    return results;
-})
-.catch((e) => {
-    alert("Geocode was not successful for the following reason: " + e);
-});
+    geocoder.geocode(request)
+    .then((result) => {
+        const { results } = result;
+        markVar.setPosition(results[0].geometry.location);
+        markVar.setMap(googleMap);
+        initInfoWindow();
+        return results;
+    })
+    .catch((e) => {
+        alert("Geocode was not successful for the following reason: " + e);
+    });
 };
 
