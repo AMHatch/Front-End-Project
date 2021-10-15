@@ -9,10 +9,30 @@ async function initialization(){
     const today = new Date()
     const todaysDate = (today.getMonth()+1)+'/'+today.getDate();
     const mapMarkers = await main(todaysDate)
+    insertData(mapMarkers)
     sortObj(mapMarkers)
 }
 
 initialization()
+
+function insertData(chosenEventsList) {
+    let event1TitleEl = document.querySelector("#event1Title");
+    let event1ContentEl = document.querySelector("#event1Content");
+
+
+    let event2TitleEl = document.querySelector("#event2Title");
+    let event2ContentEl = document.querySelector("#event2Content");
+
+    let event3TitleEl = document.querySelector("#event3Title")
+    let event3ContentEl = document.querySelector("#event3Content");
+
+    event1TitleEl.textContent = `Year: ${chosenEventsList[0].year}`;
+    event1ContentEl.textContent = `${chosenEventsList[0].description}`;
+    event2TitleEl.textContent = `Year: ${chosenEventsList[1].year}`;
+    event2ContentEl.textContent = `${chosenEventsList[1].description}`;
+    event3TitleEl.textContent = `Year: ${chosenEventsList[2].year}`;
+    event3ContentEl.textContent = `${chosenEventsList[2].description}`;
+}
 
 submitButton.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -24,6 +44,7 @@ submitButton.addEventListener("click", async (e) => {
     else{
         //work in progress
         const mapMarkers = await main(date)
+        insertData(mapMarkers)
         sortObj(mapMarkers)
     }; 
 });
