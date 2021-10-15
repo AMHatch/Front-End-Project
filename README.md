@@ -24,12 +24,14 @@ screenshot or video placeholder
 ## MVP
  
 Build a mobile responsive webpage that displays the data for this day in history and also allows the user to select a date of their choice. 
-Use various API's to compile data on the event, it's historical location, and displays its modern day location using Google maps. and a dad joke. 
+Use various API's to compile data on the event, it's historical location, and displays its modern day location using Google maps.
 
-404 error catching page with dad jokes. Because dad jokes make everything better.
+
 
 
 ## Strech Goals
+
+404 error catching page with dad jokes. Because dad jokes make everything better.
 
 Dad jokes API
 
@@ -52,16 +54,14 @@ function scrapeWikipedia(link) {
       const doc = parser.parseFromString(wikiPageText, "text/html");
       const infoBoxLabelList = doc.querySelectorAll(".infobox-label");
       let countryNode;
-  
       // Checks to see if a country field exists to scrape coordinates
       infoBoxLabelList.forEach((element) => {
         if (element.textContent == "Country") {
           countryNode = element;
         }
-      });
-  
+        });
       // Option 1: Check lat long dms
-      if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
+        if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
         const latString = doc.querySelector(".latitude").textContent;
         const longString = doc.querySelector(".longitude").textContent;
         const lat = dmsConverter(latString).toString();
@@ -71,9 +71,9 @@ function scrapeWikipedia(link) {
           locationType: "coord",
           latlng: { lat, lng },
         });
-      }
+        }
       // Option 2: Check lat long decimal
-      else if (doc.querySelector(".geo-dec")) {
+        else if (doc.querySelector(".geo-dec")) {
         const parent = doc.querySelector(".geo-dec");
         const content = parent.textContent;
         const contentArray = content.split("°");
@@ -85,7 +85,7 @@ function scrapeWikipedia(link) {
           locationType: "coord",
           latlng: { lat, lng },
         });
-      }
+        }
       // Option 3: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
@@ -96,12 +96,11 @@ function scrapeWikipedia(link) {
           locationType: "country",
           latlng: { lat: "", lng: "" },
         });
-      }
+        }
       // Option 4: Found Nothing
-      else {
+        else {
         res(null);
-      }
-      
+        }
     }catch (ex) {
       //possible 404 page link, stretch goal
       console.log(ex);
@@ -111,7 +110,7 @@ function scrapeWikipedia(link) {
 // Written by  Hunter Hutchisson and Victoria Walker
 ```
 ```js
-// function to sort incoming Object data by location datatype.
+// function to sort incoming Object data by location datatype and assign it a marker.
 function sortObj(objArray){
     for(let i = 0; i < objArray.length; i++){
         let markerArr = [marker,marker2,marker3];
@@ -137,9 +136,11 @@ function sortObj(objArray){
 ## Developers:
 
 Victoria Walker :
- https://github.com/v-walker
+https://github.com/v-walker
+- research and development
 - historical APIs and Front End integration
-- TBD
+- Front end development of home and search page HTML, JS, and CSS
+- responsive design
 
 Hunter Hutchisson : 
 https://github.com/hunterhutchisson
@@ -147,15 +148,14 @@ https://github.com/hunterhutchisson
 - TBD
 
 Ryan Donald :
- https://github.com/ryanthomasdonald
-- creative director
-- Front end development of landing page HTML, JS and CSS
-- TBD
- 
+https://github.com/ryanthomasdonald
+- Creative Director
+- Front end development of landing/about page using HTML, CSS, and JavaScript
+- Created custom assets with Adobe Photoshop
 
 Andrew Hatch :
- https://github.com/AMHatch
- - Google Maps API, and Google Geocode API integration
- - Google Maps styling and customiztion
- - TBD
+https://github.com/AMHatch
+- Google Maps API, and Google Geocode API integration
+- Google Maps styling and customiztion
+- TBD
 
