@@ -33,26 +33,7 @@ body{
 .bg-med-gray{
     background-color: #222222;
 }
-.bg-lGrey{
-    background-color: #CDD7D6;
-}
-.bg-white{
-    background-color: #FFFFFF;
-}
-.bg-oxford-blue {
-    background-color: #102542;
-}
-.bg-off-white {
-    background-color: #e9ecee;
-}
-.menu-bg{
-    /* Ryan's choices */
-    background-color: #C61C26;
-    /* background-color: #f8d753; */
-    
-    /* Original Color Palette Options */
-    /* background-color: #f87060; */
-}
+
 .text-white{
     color: white;
 }
@@ -62,9 +43,9 @@ body{
 .text-fuchsia{
     color: #CB00F8;
 }
-.border-light-grey {
+/* .border-light-grey {
     border: 2px solid #CDD7D6;
-}
+} */
 
 .font-roboto {
     font-family: 'Roboto', sans-serif;
@@ -72,22 +53,13 @@ body{
 .bg-black{
     background-color: #000000;
 }
-.bg-light-blue {
-    background-color: #C4DDFE;
-}
-.bg-light-grey {
-    background-color: #e5e5e8
-}
 
 .card {
     width: 100%;
     height: 12rem;
-    /* border-radius: 4px; */
+   /* border-radius: 4px;  */
 }
 
-.text-oxford{
-    color: #102542;
-}
 select:hover{
     background-color: #CB00F8;
 }
@@ -95,18 +67,6 @@ select:hover{
     height: 650px;
     width: 100%;
     
-}
-
-
-a{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #102542;
-}
-
-.text-oxford-blue {
-    color: #102542;
 }
 
 .header-img {
@@ -127,48 +87,50 @@ a{
 }
 
 .button {
-    box-shadow: 2px 2px 2px 1.5px rgba(16, 37, 66, 0.35)
+    box-shadow: 2px 2px 2px 1.5px rgba(34, 34, 34, 0.35);
+    width: 20%;
 }
 
 .button:hover {
-    box-shadow: 2px 2px 2px 1px #CB00F8
+    box-shadow: 0px 0px 10px 4px rgba(203, 0, 248, 0.6)
 }
 
 .button:active {
-    box-shadow: 0px 0px 0px 0px rgba(16, 37, 66, 0.4)
+    box-shadow: 0px 0px 0px 0px rgba(34, 34, 34, 0.35)
 }
 
 .subheading-hr {
-    color: #C4DDFE;
+    color: white;
+}
+
+.card-hr {
+    color: white;
 }
 
 @media only screen and (max-width: 425px) {
     .today-img {
         width: 90%;
     }
-    /* .card {
-        width: 75%;
-    } */
 }
 
 @media only screen and (max-width: 768px) {
     .card {
         height: 14rem;
     }
-    .navbar {
-        height: 5vh;
+    .button {
+        width: 20%;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    .navbar {
-        height: 6vh;
-    }
     .header-img {
         width: 70%;
     }
     .today-img {
         width: 50%;
+    }
+    .button {
+        width: 12%;
     }
 }
 
@@ -182,8 +144,8 @@ a{
     .today-img {
         width: 40%
     }
-    .navbar {
-        height: 5vh;
+    .button {
+        width: 8%;
     }
 
 }
@@ -197,8 +159,5 @@ html{
 
     body {
         margin: auto;
-    }
-    .navbar {
-        height: 3vh;
     }
 }

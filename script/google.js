@@ -11,19 +11,9 @@ let longitude;
 let latlngStr;
 let latlng;
 
-// let chosenEventsList = [
-//   {
-//     locationType: "coord",
-//     country: "",
-//     latlng: { lat: "46.81388888888888", lng: "71.20805555555556" },
-//   },
-//   { locationType: "country", country: "Mexico", latlng: { lat: "", lng: "" } },
-//   {
-//     locationType: "coord",
-//     country: "",
-//     latlng: { lat: "49.8486", lng: "3.2864" },
-//   },
-// ];
+// chosenEventsList = [{country: '', locationType: 'coord', latlng: {lat: '50.06026111111111', lng: '8.26581111111111'}, description: 'Manfred von Richthofen, a.k.a. The Red Baron, shoo…nal victories before his death the following day.', year: '1918'}, 
+// {country: '', locationType: 'coord', latlng: {lat: '42', lng: '43'}, description: 'The Georgian king, Erekle II, abandoned by his Rus…, wins a victory over Ottoman forces at Aspindza.', year: '1770'},
+//  {country: '', locationType: 'coord', latlng: {lat: '59.32944444444445', lng: '18.06861111111111'}, description: 'The sun dog phenomenon observed over Stockholm and depicted in the famous painting Vädersolstavlan.', year: '1535'}]
 
 // initializing the map
 let options = {
@@ -50,9 +40,9 @@ let options = {
       stylers: [{ color: "#263c3f" }],
     },
     {
-      featureType: "poi.park",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#6b9a76" }],
+        featureType: "poi.park",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#ffffff" }],
     },
     {
       featureType: "road",
@@ -80,9 +70,9 @@ let options = {
       stylers: [{ color: "#1f2835" }],
     },
     {
-      featureType: "road.highway",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#f3d19c" }],
+        featureType: "road.highway",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#ffffff" }],
     },
     {
       featureType: "transit",
@@ -109,22 +99,46 @@ let options = {
       elementType: "labels.text.stroke",
       stylers: [{ color: "#000000" }],
     },
-  ],
-};
-
+    ],
+    };
+    
 function initMap() {
-  googleMap = new google.maps.Map(
-    document.getElementById("googleMap"),
-    options
-  );
-  geocoder = new google.maps.Geocoder();
-  infowindow = new google.maps.InfoWindow();
-  marker = new google.maps.Marker({ googleMap });
-  marker2 = new google.maps.Marker({ googleMap });
-  marker3 = new google.maps.Marker({ googleMap });
-  googleMap.addListener("click", (e) => {
-    sortObj(chosenEventsList);
-  });
+googleMap = new google.maps.Map(document.getElementById("googleMap"),options);
+geocoder = new google.maps.Geocoder();
+// infowindow = new google.maps.InfoWindow({content: chosenEventsList[0].year,});
+// infowindow2 = new google.maps.InfoWindow({content: chosenEventsList[1].year,});
+// infowindow3 = new google.maps.InfoWindow({content: chosenEventsList[2].year,});
+
+const pointer = "images/map-pointer.png"
+marker = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+marker2 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+marker3 = new google.maps.Marker({googleMap, icon:pointer ,animation: google.maps.Animation.DROP,});
+
+marker.addListener("click", () => {
+    infowindow.open({
+    anchor: marker,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+marker2.addListener("click", () => {
+    infowindow2.open({
+    anchor: marker2,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+marker3.addListener("click", () => {
+    infowindow3.open({
+    anchor: marker3,
+    googleMap,
+    shouldFocus: false,
+    });
+});
+
+// googleMap.addListener("click", (e) => {
+// sortObj(chosenEventsList)
+// });
 }
 
 // function to sort incoming object data by location data type
