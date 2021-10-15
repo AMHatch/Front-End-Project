@@ -180,9 +180,3 @@ footer {
         margin: auto;
     }
 }
-
-#footer {
-    position: fixed;
-    bottom: 0;
-    z-index: 5;
-}
