@@ -20,7 +20,8 @@ let options = {
     center: { lat: 30, lng:  15 },
     mapTypeControl: false,
     styles: [
-        { elementType: "geometry", stylers: [{ color: "#585858" }] },
+        { elementType: "geometry.fill", stylers: [{ color: "#585858" }] },
+        { elementType: "geometry.stroke", stylers: [{ color: "#222222" }] },
         { elementType: "labels.text.stroke", stylers: [{ color: "#000000" }] },
         { elementType: "labels.text.fill", stylers: [{ color: "#ffffff" }] },
         {
