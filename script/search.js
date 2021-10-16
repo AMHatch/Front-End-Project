@@ -1,5 +1,5 @@
 let submitButtonSearch = document.querySelector("#submit-button-search");
-// let resetButtons = document.querySelector('.reset-button')
+let resetButtons = document.querySelector('.reset-button')
 let month = document.querySelector("#month");
 let day = document.querySelector("#day");
 let year = document.querySelector("#year");
@@ -63,16 +63,16 @@ submitButtonSearch.addEventListener("click", async (e) => {
     else{
         dataReset()
         const mapMarkers = await main(date)
+        // window.location.href="#yourSearch"
         insertData(mapMarkers, date)
         sortObj(mapMarkers)
     }; 
 });
 
-// resetButtons.addEventListener("click", async (e) => {
-//     e.preventDefault();
-//     dataReset()
-//     const mapMarkers = await main(storedDate)
-//     insertData(mapMarkers, storedDate)
-//     sortObj(mapMarkers)
-
-// });
+resetButtons.addEventListener("click", async (e) => {
+    e.preventDefault();
+    dataReset();
+    const mapMarkers = await main(storedDate);
+    insertData(mapMarkers, storedDate);
+    sortObj(mapMarkers);
+});
