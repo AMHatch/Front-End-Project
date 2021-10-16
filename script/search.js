@@ -63,6 +63,7 @@ submitButtonSearch.addEventListener("click", async (e) => {
     else{
         dataReset()
         const mapMarkers = await main(date)
+        // window.location.href="#yourSearch"
         insertData(mapMarkers, date)
         sortObj(mapMarkers)
     }; 
