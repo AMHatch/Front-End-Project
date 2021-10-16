@@ -19,6 +19,11 @@
     border-bottom: 0.5px solid #01FEFF;
     }
 
+.nav-item:active a {
+    color: #01FEFF;
+    border-bottom: 0.5px solid #CB00F8;
+    }
+
 .navLogoImg {
     width: 50px;
     padding-left: 10px;
