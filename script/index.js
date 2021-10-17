@@ -1,13 +1,18 @@
 let submitButtonIndex = document.querySelector("#submit-button-index");
+let resetButtons = document.querySelector('.reset-button')
 let month = document.querySelector("#month");
 let day = document.querySelector("#day");
 let year = document.querySelector("#year");
 let desc = document.querySelector("#desc");
 let map = document.querySelector("#map");
+let storedDate
+
 
 async function initialization(){
     const today = new Date()
     const todaysDate = (today.getMonth()+1)+'/'+today.getDate();
+    localStorage.setItem('storedDate', todaysDate)
+    storedDate = localStorage.getItem('storedDate')
     const mapMarkers = await main(todaysDate)
     insertData(mapMarkers)
     sortObj(mapMarkers)
@@ -18,7 +23,6 @@ initialization()
 function insertData(chosenEventsList) {
     let event1TitleEl = document.querySelector("#event1Title");
     let event1ContentEl = document.querySelector("#event1Content");
-
 
     let event2TitleEl = document.querySelector("#event2Title");
     let event2ContentEl = document.querySelector("#event2Content");
@@ -34,6 +38,24 @@ function insertData(chosenEventsList) {
     event3ContentEl.textContent = `${chosenEventsList[2].description}`;
 }
 
+function dataReset() {
+    let event1TitleEl = document.querySelector("#event1Title");
+    let event1ContentEl = document.querySelector("#event1Content");
+
+
+    let event2TitleEl = document.querySelector("#event2Title");
+    let event2ContentEl = document.querySelector("#event2Content");
+
+    let event3TitleEl = document.querySelector("#event3Title")
+    let event3ContentEl = document.querySelector("#event3Content");
+
+    event1TitleEl.textContent = `Waiting...`;
+    event1ContentEl.textContent = ``;
+    event2TitleEl.textContent = `Waiting...`;
+    event2ContentEl.textContent = ``;
+    event3TitleEl.textContent = `Waiting...`;
+    event3ContentEl.textContent = ``;
+}
 
 submitButtonIndex.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -46,4 +68,12 @@ submitButtonIndex.addEventListener("click", async (e) => {
         localStorage.setItem('storedDate', dateFromIndex);
         window.location.assign('search.html')
     }; 
+});
+
+resetButtons.addEventListener("click", async (e) => {
+    e.preventDefault();
+    dataReset();
+    const mapMarkers = await main(storedDate);
+    insertData(mapMarkers, storedDate);
+    sortObj(mapMarkers);
 });
