@@ -59,13 +59,6 @@ p {
     height: 12rem;
     overflow: hidden;
 }
-.newCard {
-    width: 95%;
-    height: 12rem;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
 
 select:hover{
     background-color: #CB00F8;
@@ -173,7 +166,7 @@ footer {
 .reset-button {
     color: white;
     font-size: 1.5rem;
-    margin-right: 10px;
+    margin-right: 25px;
 }
 
 .reset-button:hover {
@@ -196,8 +189,8 @@ footer {
 
 @media only screen and (max-width: 768px) {
     .card {
-        height: 14rem;
-        width: 85%;
+        height: 10rem;
+        width: 90%;
     }
     .button {
         width: 20%;
@@ -217,9 +210,6 @@ footer {
 }
 
 @media only screen and (min-width: 1440px) {
-    body {
-        margin: 0 auto;
-    }
     .header-img {
         width: 50%
     }
@@ -232,8 +222,7 @@ footer {
 }
 
 @media only screen and (min-width: 2560px) {
-
-    body {
-        margin: auto;
+    .card {
+        height: 10rem;
     }
 }
