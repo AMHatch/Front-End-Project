@@ -114,14 +114,22 @@ select:hover{
     color: white;
 }
 
+.about-heading {
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
 footer {
     font-size: 0.8rem;
 }
 
-.footer-header {
+.footer-heading {
     font-size: 0.9rem;
     text-decoration: underline;
     color: #CB00F8;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 }
 
 .footer-link {
