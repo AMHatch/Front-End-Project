@@ -44,9 +44,10 @@ submitButtonSearch.addEventListener("click", async (e) => {
     }
     else{
         dataReset()
+        window.scrollTo(0,0)
         const mapMarkers = await main(date)
-        // window.location.href="#yourSearch"
         insertData(mapMarkers, date)
         sortObj(mapMarkers)
     }; 
 });
+
