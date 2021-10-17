@@ -14,9 +14,8 @@ screenshot or video placeholder
 - APIs:
     - Google Maps API
     - Google Geocode API
-    - WikiPedia API
+    - WikiPedia, On this Day API
     - WikiPedia scrapes
-    - Swagger API
 
 - Bootstrap
 - AJAX
@@ -42,9 +41,9 @@ add in a travel api to show travel options to the location.
 
 ## Code Snippets
 ```js
-
+//
 // Input link
-// Output - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string), 4) null
+// Output - 1) lat long in decimal (string), 2) country name (string), 3) null
 function scrapeWikipedia(link) {
   return new Promise(async (res, _rej) => {
     try{
@@ -59,34 +58,20 @@ function scrapeWikipedia(link) {
         if (element.textContent == "Country") {
           countryNode = element;
         }
-        });
-      // Option 1: Check lat long dms
-        if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-        const latString = doc.querySelector(".latitude").textContent;
-        const longString = doc.querySelector(".longitude").textContent;
-        const lat = dmsConverter(latString).toString();
-        const lng = dmsConverter(longString).toString();
+      });
+      // Option 1: Check for coordinates
+      if (doc.querySelector(".geo")) {
+        const coordString = doc.querySelector(".geo").textContent;
+        const coordArr = coordString.split('; ')
+        const lat = coordArr[0]
+        const lng = coordArr[1]
         res({
           country: "",
           locationType: "coord",
           latlng: { lat, lng },
         });
-        }
-      // Option 2: Check lat long decimal
-        else if (doc.querySelector(".geo-dec")) {
-        const parent = doc.querySelector(".geo-dec");
-        const content = parent.textContent;
-        const contentArray = content.split("°");
-        const contentArray2 = contentArray[1].split(" ");
-        const lng = contentArray[0];
-        const lat = contentArray2[1];
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
-        });
-        }
-      // Option 3: Check Country
+      }
+      // Option 2: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
         const countryParentLastChild = countryParent.lastChild;
@@ -96,15 +81,14 @@ function scrapeWikipedia(link) {
           locationType: "country",
           latlng: { lat: "", lng: "" },
         });
-        }
-      // Option 4: Found Nothing
-        else {
+      }
+      // Option 3: Found Nothing
+      else {
         res(null);
-        }
+      }
     }catch (ex) {
-      //possible 404 page link, stretch goal
       console.log(ex);
-    };
+    }
   });
 }
 // Written by  Hunter Hutchisson and Victoria Walker
