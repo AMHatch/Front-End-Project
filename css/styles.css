@@ -114,12 +114,12 @@ select:hover{
     color: white;
 }
 
-#card-body::-webkit-scrollbar {
+.card-body::-webkit-scrollbar {
     width: 8px;
     background-color: #383838;
 }
 
-#card-body::-webkit-scrollbar-thumb {
+.card-body::-webkit-scrollbar-thumb {
     background-color: #CB00F8;
     /* outline: 1px solid #222222; */
 }
