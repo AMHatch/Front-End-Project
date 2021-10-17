@@ -121,7 +121,7 @@ select:hover{
 
 .card-body::-webkit-scrollbar-thumb {
     background-color: #CB00F8;
-    /* outline: 1px solid #222222; */
+    border-radius: 4px;
 }
 
 .about-heading {
