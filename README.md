@@ -131,6 +131,7 @@ Page Content on Extra Small Screen Size (e.g., mobile screen)
 ## Developers:
 
 Victoria Walker : Googler-In-Chief, CSS BFF
+
 https://github.com/v-walker
 - Historical APIs Reasearch 
 - Front End integration of Home and Search page including use of HTML, JavaScript, and CSS
@@ -139,6 +140,7 @@ https://github.com/v-walker
 
 
 Hunter Hutchisson : Wiki Miester, Far Fetcher
+
 https://github.com/hunterhutchisson
 - Site functionality of initial search and user requested searches.
 - Data fetching event info and geolocations by a combination of Historical APIs and Wikipedia webscraping.
@@ -146,12 +148,14 @@ https://github.com/hunterhutchisson
 
 
 Ryan Donald : Kernel Photoshop, Culture Vulture
+
 https://github.com/ryanthomasdonald
 - Front end development of landing/about page using HTML, CSS, and JavaScript
 - Created custom assets with Adobe Photoshop
 
 
 Andrew Hatch : Digital Cartographer, Documiester
+
 https://github.com/AMHatch
 - Google Maps API, and Google Geocode API integration
 - Google Maps styling and customiztion
