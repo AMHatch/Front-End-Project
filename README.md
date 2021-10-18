@@ -2,7 +2,7 @@
 On this date in history, or on the date of your choosing, learn about historical events and where those locations are in the modern world. 
 
 
-MAIN PAGE SCREENSHOT
+![Main page layout screenshot](images/WBLayout-FullScreen-XL.jpg)
 
 
 ## Tech Stack 
@@ -115,7 +115,14 @@ function sortObj(objArray){
 
 ## Screenshots
 
-VARIOUS COOL SCREENSHOTs
+Full-screen Content on Extra Large Screen Size
+![Full-screen Content Image on Extra Large Screen Size](images/WBContent-FullScreen-XL.jpg)
+
+Whereback Page Content on Large Screen Size
+![Page Content Image on Large Screen Size](images/WBContent-LargeScreen.jpg)
+
+Page Content on Extra Small Screen Size (e.g., mobile screen)
+![Page Content Image on Extra Small Screen Size](images/WBContent-XS.jpg)
 
 
 ## Developers:
