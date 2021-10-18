@@ -130,8 +130,9 @@ Page Content on Extra Small Screen Size (e.g., mobile screen)
 Victoria Walker : Googler-In-Chief, CSS BFF
 https://github.com/v-walker
 - Historical APIs Reasearch 
-- Front End integration of Home and Search page HTML, JS, and CSS
+- Front End integration of Home and Search page including use of HTML, JavaScript, and CSS
 - Responsive Design
+- Site Accessibility Features
 
 Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
