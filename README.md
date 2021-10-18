@@ -2,7 +2,7 @@
 On this date in history, or on the date of your choosing, learn about historical events and where those locations are in the modern world. 
 
 
-screenshot or video placeholder
+MAIN PAGE SCREENSHOT
 
 
 ## Tech Stack 
@@ -18,6 +18,7 @@ screenshot or video placeholder
     - WikiPedia scrapes
 
 - Bootstrap
+- Flexbox
 - AJAX
 
 ## MVP
@@ -58,19 +59,19 @@ function scrapeWikipedia(link) {
         if (element.textContent == "Country") {
           countryNode = element;
         }
-      });
-      // Option 1: Check for coordinates
-      if (doc.querySelector(".geo")) {
-        const coordString = doc.querySelector(".geo").textContent;
-        const coordArr = coordString.split('; ')
-        const lat = coordArr[0]
-        const lng = coordArr[1]
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
         });
-      }
+        // Option 1: Check Coordinates
+        if (doc.querySelector(".geo")) {
+          const coordString = doc.querySelector(".geo").textContent;
+          const coordArr = coordString.split('; ')
+          const lat = coordArr[0]
+          const lng = coordArr[1]
+          res({
+            country: "",
+            locationType: "coord",
+            latlng: { lat, lng },
+          });
+        }
       // Option 2: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
@@ -81,9 +82,9 @@ function scrapeWikipedia(link) {
           locationType: "country",
           latlng: { lat: "", lng: "" },
         });
-      }
+        }
       // Option 3: Found Nothing
-      else {
+        else {
         res(null);
       }
     }catch (ex) {
@@ -114,32 +115,30 @@ function sortObj(objArray){
 
 ## Screenshots
 
-
+VARIOUS COOL SCREENSHOTs
 
 
 ## Developers:
 
-Victoria Walker :
+Victoria Walker : Googler-In-Chief, CSS BFF
 https://github.com/v-walker
-- research and development
-- historical APIs and Front End integration
-- Front end development of home and search page HTML, JS, and CSS
-- responsive design
+- Historical APIs Reasearch 
+- Front End integration of Home and Search page HTML, JS, and CSS
+- Responsive Design
 
-Hunter Hutchisson : 
+Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
-- historical APIs and back end integration
-- TBD
+- Historical API lead
+- Site Functionality 
 
-Ryan Donald :
+Ryan Donald : Kernel Photoshop, Culture Vulture
 https://github.com/ryanthomasdonald
-- Creative Director
 - Front end development of landing/about page using HTML, CSS, and JavaScript
 - Created custom assets with Adobe Photoshop
 
-Andrew Hatch :
+Andrew Hatch : Digital Cartographer, Documiester
 https://github.com/AMHatch
 - Google Maps API, and Google Geocode API integration
 - Google Maps styling and customiztion
-- TBD
+
 
