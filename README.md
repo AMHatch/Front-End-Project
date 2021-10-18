@@ -116,12 +116,15 @@ function sortObj(objArray){
 ## Screenshots
 
 Full-screen Content on Extra Large Screen Size
+
 ![Full-screen Content Image on Extra Large Screen Size](images/WBContent-FullScreen-XL.jpg)
 
 Whereback Page Content on Large Screen Size
+
 ![Page Content Image on Large Screen Size](images/WBContent-LargeScreen.jpg)
 
 Page Content on Extra Small Screen Size (e.g., mobile screen)
+
 ![Page Content Image on Extra Small Screen Size](images/WBContent-XS.jpg)
 
 
