@@ -128,15 +128,18 @@ https://github.com/v-walker
 - Front End integration of Home and Search page HTML, JS, and CSS
 - Responsive Design
 
+
 Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
 - Historical API lead
 - Site Functionality 
 
+
 Ryan Donald : Kernel Photoshop, Culture Vulture
 https://github.com/ryanthomasdonald
 - Front end development of landing/about page using HTML, CSS, and JavaScript
 - Created custom assets with Adobe Photoshop
+
 
 Andrew Hatch : Digital Cartographer, Documiester
 https://github.com/AMHatch
