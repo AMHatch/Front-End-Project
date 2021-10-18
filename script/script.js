@@ -67,7 +67,7 @@ function scrapeWikipedia(link) {
       //     latlng: { lat, lng },
       //   });
       // }
-      // Option 3: Check Country
+      // Option 2: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
         const countryParentLastChild = countryParent.lastChild;
@@ -78,7 +78,7 @@ function scrapeWikipedia(link) {
           latlng: { lat: "", lng: "" },
         });
       }
-      // Option 4: Found Nothing
+      // Option 3: Found Nothing
       else {
         res(null);
       }
@@ -108,7 +108,6 @@ function parseMapEvent(OG, description, year) {
 // Main
 async function main(date) {
   try {
-    console.log(date);
     chosenEventsList = [];
     const eventsJSON = await fetch(
       `https://byabbe.se/on-this-day/${date}/events.json`
