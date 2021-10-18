@@ -2,7 +2,7 @@
 On this date in history, or on the date of your choosing, learn about historical events and where those locations are in the modern world. 
 
 
-MAIN PAGE SCREENSHOT
+![Main page layout screenshot](images/WBLayout-FullScreen-XL.jpg)
 
 
 ## Tech Stack 
@@ -14,9 +14,8 @@ MAIN PAGE SCREENSHOT
 - APIs:
     - Google Maps API
     - Google Geocode API
-    - WikiPedia API
+    - WikiPedia, On this Day API
     - WikiPedia scrapes
-    - Swagger API
 
 - Bootstrap
 - Flexbox
@@ -43,9 +42,9 @@ add in a travel api to show travel options to the location.
 
 ## Code Snippets
 ```js
-
+//
 // Input link
-// Output - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string), 4) null
+// Output - 1) lat long in decimal (string), 2) country name (string), 3) null
 function scrapeWikipedia(link) {
   return new Promise(async (res, _rej) => {
     try{
@@ -87,11 +86,10 @@ function scrapeWikipedia(link) {
       // Option 3: Found Nothing
         else {
         res(null);
-        }
+      }
     }catch (ex) {
-      //possible 404 page link, stretch goal
       console.log(ex);
-    };
+    }
   });
 }
 // Written by  Hunter Hutchisson and Victoria Walker
@@ -117,7 +115,14 @@ function sortObj(objArray){
 
 ## Screenshots
 
-VARIOUS COOL SCREENSHOTs
+Full-screen Content on Extra Large Screen Size
+![Full-screen Content Image on Extra Large Screen Size](images/WBContent-FullScreen-XL.jpg)
+
+Whereback Page Content on Large Screen Size
+![Page Content Image on Large Screen Size](images/WBContent-LargeScreen.jpg)
+
+Page Content on Extra Small Screen Size (e.g., mobile screen)
+![Page Content Image on Extra Small Screen Size](images/WBContent-XS.jpg)
 
 
 ## Developers:
@@ -125,8 +130,9 @@ VARIOUS COOL SCREENSHOTs
 Victoria Walker : Googler-In-Chief, CSS BFF
 https://github.com/v-walker
 - Historical APIs Reasearch 
-- Front End integration of Home and Search page HTML, JS, and CSS
+- Front End integration of Home and Search page including use of HTML, JavaScript, and CSS
 - Responsive Design
+- Site Accessibility Features
 
 
 Hunter Hutchisson : Wiki Miester, Far Fetcher
