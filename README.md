@@ -134,15 +134,19 @@ https://github.com/v-walker
 - Responsive Design
 - Site Accessibility Features
 
+
 Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
-- Historical API lead
-- Site Functionality 
+- Site functionality of initial search and user requested searches.
+- Data fetching event info and geolocations by a combination of Historical APIs and Wikipedia webscraping.
+- Search and Reset button functionality
+
 
 Ryan Donald : Kernel Photoshop, Culture Vulture
 https://github.com/ryanthomasdonald
 - Front end development of landing/about page using HTML, CSS, and JavaScript
 - Created custom assets with Adobe Photoshop
+
 
 Andrew Hatch : Digital Cartographer, Documiester
 https://github.com/AMHatch
