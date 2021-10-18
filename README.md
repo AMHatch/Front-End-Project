@@ -2,7 +2,7 @@
 On this date in history, or on the date of your choosing, learn about historical events and where those locations are in the modern world. 
 
 
-screenshot or video placeholder
+MAIN PAGE SCREENSHOT
 
 
 ## Tech Stack 
@@ -19,6 +19,7 @@ screenshot or video placeholder
     - Swagger API
 
 - Bootstrap
+- Flexbox
 - AJAX
 
 ## MVP
@@ -60,33 +61,19 @@ function scrapeWikipedia(link) {
           countryNode = element;
         }
         });
-      // Option 1: Check lat long dms
-        if (doc.querySelector(".latitude") && doc.querySelector(".longitude")) {
-        const latString = doc.querySelector(".latitude").textContent;
-        const longString = doc.querySelector(".longitude").textContent;
-        const lat = dmsConverter(latString).toString();
-        const lng = dmsConverter(longString).toString();
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
-        });
+        // Option 1: Check Coordinates
+        if (doc.querySelector(".geo")) {
+          const coordString = doc.querySelector(".geo").textContent;
+          const coordArr = coordString.split('; ')
+          const lat = coordArr[0]
+          const lng = coordArr[1]
+          res({
+            country: "",
+            locationType: "coord",
+            latlng: { lat, lng },
+          });
         }
-      // Option 2: Check lat long decimal
-        else if (doc.querySelector(".geo-dec")) {
-        const parent = doc.querySelector(".geo-dec");
-        const content = parent.textContent;
-        const contentArray = content.split("°");
-        const contentArray2 = contentArray[1].split(" ");
-        const lng = contentArray[0];
-        const lat = contentArray2[1];
-        res({
-          country: "",
-          locationType: "coord",
-          latlng: { lat, lng },
-        });
-        }
-      // Option 3: Check Country
+      // Option 2: Check Country
       else if (countryNode) {
         const countryParent = countryNode.parentNode;
         const countryParentLastChild = countryParent.lastChild;
@@ -97,7 +84,7 @@ function scrapeWikipedia(link) {
           latlng: { lat: "", lng: "" },
         });
         }
-      // Option 4: Found Nothing
+      // Option 3: Found Nothing
         else {
         res(null);
         }
@@ -130,32 +117,30 @@ function sortObj(objArray){
 
 ## Screenshots
 
-
+VARIOUS COOL SCREENSHOTs
 
 
 ## Developers:
 
-Victoria Walker :
+Victoria Walker : Googler-In-Chief, CSS BFF
 https://github.com/v-walker
-- research and development
-- historical APIs and Front End integration
-- Front end development of home and search page HTML, JS, and CSS
-- responsive design
+- Historical APIs Reasearch 
+- Front End integration of Home and Search page HTML, JS, and CSS
+- Responsive Design
 
-Hunter Hutchisson : 
+Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
-- historical APIs and back end integration
-- TBD
+- Historical API lead
+- Site Functionality 
 
-Ryan Donald :
+Ryan Donald : Kernel Photoshop, Culture Vulture
 https://github.com/ryanthomasdonald
-- Creative Director
 - Front end development of landing/about page using HTML, CSS, and JavaScript
 - Created custom assets with Adobe Photoshop
 
-Andrew Hatch :
+Andrew Hatch : Digital Cartographer, Documiester
 https://github.com/AMHatch
 - Google Maps API, and Google Geocode API integration
 - Google Maps styling and customiztion
-- TBD
+
 
