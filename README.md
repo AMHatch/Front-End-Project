@@ -2,7 +2,7 @@
 On this date in history, or on the date of your choosing, learn about historical events and where those locations are in the modern world. 
 
 
-MAIN PAGE SCREENSHOT
+![Main page layout screenshot](images/WBLayout-FullScreen-XL.jpg)
 
 
 ## Tech Stack 
@@ -115,7 +115,14 @@ function sortObj(objArray){
 
 ## Screenshots
 
-VARIOUS COOL SCREENSHOTs
+Full-screen Content on Extra Large Screen Size
+![Full-screen Content Image on Extra Large Screen Size](images/WBContent-FullScreen-XL.jpg)
+
+Whereback Page Content on Large Screen Size
+![Page Content Image on Large Screen Size](images/WBContent-LargeScreen.jpg)
+
+Page Content on Extra Small Screen Size (e.g., mobile screen)
+![Page Content Image on Extra Small Screen Size](images/WBContent-XS.jpg)
 
 
 ## Developers:
@@ -123,8 +130,9 @@ VARIOUS COOL SCREENSHOTs
 Victoria Walker : Googler-In-Chief, CSS BFF
 https://github.com/v-walker
 - Historical APIs Reasearch 
-- Front End integration of Home and Search page HTML, JS, and CSS
+- Front End integration of Home and Search page including use of HTML, JavaScript, and CSS
 - Responsive Design
+- Site Accessibility Features
 
 Hunter Hutchisson : Wiki Miester, Far Fetcher
 https://github.com/hunterhutchisson
