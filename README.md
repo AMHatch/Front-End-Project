@@ -14,9 +14,8 @@ MAIN PAGE SCREENSHOT
 - APIs:
     - Google Maps API
     - Google Geocode API
-    - WikiPedia API
+    - WikiPedia, On this Day API
     - WikiPedia scrapes
-    - Swagger API
 
 - Bootstrap
 - Flexbox
@@ -43,9 +42,9 @@ add in a travel api to show travel options to the location.
 
 ## Code Snippets
 ```js
-
+//
 // Input link
-// Output - 1) lat long in decimal (string), 2) lat long in dms (string), 3) country name (string), 4) null
+// Output - 1) lat long in decimal (string), 2) country name (string), 3) null
 function scrapeWikipedia(link) {
   return new Promise(async (res, _rej) => {
     try{
@@ -87,11 +86,10 @@ function scrapeWikipedia(link) {
       // Option 3: Found Nothing
         else {
         res(null);
-        }
+      }
     }catch (ex) {
-      //possible 404 page link, stretch goal
       console.log(ex);
-    };
+    }
   });
 }
 // Written by  Hunter Hutchisson and Victoria Walker

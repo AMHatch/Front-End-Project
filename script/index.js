@@ -10,8 +10,8 @@ async function initialization(){
     const today = new Date()
     const todaysDate = (today.getMonth()+1)+'/'+today.getDate();
     localStorage.setItem('storedDate', todaysDate)
-    storedDate = localStorage.getItem('storedDate')
     const mapMarkers = await main(todaysDate)
+    storedDate = todaysDate
     insertData(mapMarkers)
     sortObj(mapMarkers)
 }
