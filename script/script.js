@@ -16,7 +16,8 @@ function shuffleEvents(arr) {
 function scrapeWikipedia(link) {
   return new Promise(async (res, _rej) => {
     try{
-      const wikiPageBlock = await fetch(link);
+      const wikiPageBlock = await fetch(`https://api.allorigins.win/raw?url=${link}`);
+      // const wikiPageBlock = await fetch(link);
       const wikiPageText = await wikiPageBlock.text();
       const parser = new DOMParser();
       const doc = parser.parseFromString(wikiPageText, "text/html");
